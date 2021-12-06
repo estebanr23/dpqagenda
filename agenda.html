@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Toyota del Parque</title>
+</head>
+<body class="fondo-color">
+    <header>
+        <div class="site-header contenedor">
+            <div>
+                <h1 class="logo">TOYOTA <span>Del Parque</span></h1>
+            </div>
+            <div class="emblema">
+                <img src="img/emblema.png" alt="Emblema Toyota">
+            </div>
+        </div>
+
+        <div class="barra">
+            <nav class="contenedor">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Alquileres</a></li>
+                    <li><a href="#">TestDrive</a></li>
+                    <li><a href="#">Prestamos</a></li>
+                    <li><a href="#">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="contenedor principal">
+        <h1 class="centrar-texto h1-margin">Agendar Cliente</h1>
+        <div class="formulario-agenda">
+            <form action="#">
+                <div class="campo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" placeholder="Nombre">
+                </div>
+                <div class="campo">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" placeholder="Apellido">
+                </div>
+                <div class="campo">
+                    <label for="vehiculo">Vehiculo</label>
+                    <input type="text" placeholder="Vehiculo">
+                </div>
+                <div class="campo">
+                    <label for="fechaini">Fecha Inicio</label>
+                    <input type="date" placeholder="Fecha de inicio">
+                </div>
+                <div class="campo">
+                    <label for="fechafin">Fecha Fin</label>
+                    <input type="date" placeholder="Fecha de fin">
+                </div>
+                <div class="campo">
+                    <label for="descripcion">Descripcion</label>
+                    <textarea>Descripcion</textarea>
+                </div>
+                <div class="btn-agendar centrar-texto">
+                    <input type="submit" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="contenido-footer contenedor">
+            <p>DPQ</p>
+            <p class="copyright">Todos los derechos reservados 2022 &copy;</p>
+        </div>
+    </footer>
+</body>
+</html>
