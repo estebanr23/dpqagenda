@@ -1,0 +1,307 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* Reset para REMS - 62.5% = 10px de 16 px*/
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Globales */
+body {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.6rem;
+    margin: 0;
+    color: #ffffff;
+}
+
+h1, h2, h3, h4, p {
+    font-weight: 400;
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Utilidades */
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+.centrar-texto {
+    text-align: center;
+}
+.h1-margin {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+ /* Login */
+.fondo-login {
+    position: relative;
+    height: 100vh;
+    /*
+    background-image: url('/img/fondo.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    */
+    background: rgb(52,162,189);
+    background: linear-gradient(90deg, rgba(52,162,189,1) 0%, rgba(13,9,75,1) 0%, rgba(217,29,29,1) 100%);
+}
+.logo-contenedor {
+    width: 1200px;
+    height: 90px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 6.5rem;
+    color: #e62d2d;
+}
+.logo span {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    font-size: 5rem;
+    color: #979797;
+}
+/*
+.logo-contenedor .emblema {
+    margin-top: 2rem;
+}
+*/
+.site-header .emblema {
+    padding-top: 1rem;
+}
+.logo-contenedor img,
+.site-header img {
+    width: 110px;
+    height: 90px;
+}
+.formulario-login {
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem 6rem;
+    border-radius: 8px;
+}
+.formulario-login h3 {
+    font-size: 3.6rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: #000000;
+}
+.formulario-login .campo input {
+    width: 240px;
+    height: 40px;
+    border-radius: 4px;
+    border: 0.1px solid #807f7f;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+.formulario-login .btn-login {
+    background-color: rgb(226, 44, 44);
+    color: #ffffff;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 4px;
+    padding: 1rem 2rem;
+    margin: 1rem;
+}
+
+/* Index */
+.fondo-color {
+    /*
+    background: rgba(28,28,28,1);
+    background: -moz-linear-gradient(left, rgba(28,28,28,1) 0%, rgba(71,71,71,1) 0%, rgba(0,0,0,1) 0%, rgba(76,76,76,1) 0%, rgba(102,102,102,1) 0%, rgba(89,89,89,1) 0%, rgba(44,44,44,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(28,28,28,1)), color-stop(0%, rgba(71,71,71,1)), color-stop(0%, rgba(0,0,0,1)), color-stop(0%, rgba(76,76,76,1)), color-stop(0%, rgba(102,102,102,1)), color-stop(0%, rgba(89,89,89,1)), color-stop(100%, rgba(44,44,44,1)));
+    background: -webkit-linear-gradient(left, rgba(28,28,28,1) 0%, rgba(71,71,71,1) 0%, rgba(0,0,0,1) 0%, rgba(76,76,76,1) 0%, rgba(102,102,102,1) 0%, rgba(89,89,89,1) 0%, rgba(44,44,44,1) 100%);
+    background: -o-linear-gradient(left, rgba(28,28,28,1) 0%, rgba(71,71,71,1) 0%, rgba(0,0,0,1) 0%, rgba(76,76,76,1) 0%, rgba(102,102,102,1) 0%, rgba(89,89,89,1) 0%, rgba(44,44,44,1) 100%);
+    background: -ms-linear-gradient(left, rgba(28,28,28,1) 0%, rgba(71,71,71,1) 0%, rgba(0,0,0,1) 0%, rgba(76,76,76,1) 0%, rgba(102,102,102,1) 0%, rgba(89,89,89,1) 0%, rgba(44,44,44,1) 100%);
+    background: linear-gradient(to right, rgba(28,28,28,1) 0%, rgba(71,71,71,1) 0%, rgba(0,0,0,1) 0%, rgba(76,76,76,1) 0%, rgba(102,102,102,1) 0%, rgba(89,89,89,1) 0%, rgba(44,44,44,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1c1c', endColorstr='#2c2c2c', GradientType=1 );
+    */
+    background: rgb(52,162,189);
+    background: linear-gradient(90deg, rgba(52,162,189,1) 0%, rgba(13,9,75,1) 0%, rgba(217,29,29,1) 100%);
+}
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.barra {
+    background-color: #ffffff;
+}
+.barra nav ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.barra nav ul li a {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #000000;
+    display: inline-block;
+    width: 100%;
+    margin: .8rem 0;
+}
+.principal {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    min-height: calc(100vh - 188px); /* Tamaño min del main. Deja el footer abajo. */
+}
+.buscador {
+    text-align: center;
+    margin: 1rem 0 2rem 0;
+}
+.buscador .buscar{
+    width: 800px;
+    border-radius: 30px;
+    border: 1px solid #ffffff;
+    height: 45px;
+    padding: 0 2rem;
+    margin-right: 2rem;
+}
+.buscador .buscar:focus {
+    outline: none;
+}
+.buscador .btn-buscar {
+    width: 100px;
+    background-color: #dbdbdb;
+    border-radius: 30px;
+    border: 1px solid #dbdbdb;
+    height: 45px;
+    padding: 0 2rem;
+}
+.buscador .btn-buscar:hover {
+    background-color: rgba(13,9,75,1);
+    border: 1px solid rgba(13,9,75,1);
+    color: #ffffff;
+    cursor: pointer;
+}
+.lista-vehiculos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 6rem;
+    grid-row-gap: 6rem;
+}
+.lista-vehiculos .vehiculo a{
+    text-decoration: none;
+    display: inline-block;
+    transition: all .3s ease;
+}
+.lista-vehiculos .vehiculo a:hover{
+    transform: scale(1.1);
+    border-radius: 20px;
+    box-shadow: 0px 0px 50px #666;
+}
+.lista-vehiculos .vehiculo img {
+    width: 100%;
+    height: 270px;
+    display: block;
+    border-radius: 20px 20px 0 0;
+}
+.lista-vehiculos .vehiculo .info-vehiculo {
+    padding: 2rem 2rem;
+    background-color: #ffffff;
+    border-radius: 0 0 20px 20px;
+    border-style: none;
+}
+.lista-vehiculos .vehiculo .info-vehiculo p {
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+    color: black;
+}
+.lista-vehiculos .vehiculo .info-vehiculo p:last-of-type {
+    padding-bottom: 0;
+}
+.site-footer {
+    border-top: 1px solid #ffffff;
+    padding: 1.5rem 0;
+}
+.site-footer .contenido-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Alquileres */
+.contenedor-tabla {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 3rem 2rem;
+}
+.contenedor-tabla .tabla {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.tabla tr th,
+.tabla tr td {
+    text-align: center;
+    border: 1px solid #807f7f;
+    font-size: 1.8rem;
+    color: #000000;
+    padding: .8rem 0;
+}
+
+/* Formulario Agenda */
+.formulario-agenda {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 600px;
+    margin: 0 auto;
+    padding: 3rem 0;
+    box-shadow: 0px 0px 10px #666;
+}
+.formulario-agenda .campo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.formulario-agenda .campo:last-of-type{
+    align-items:flex-start;
+}
+.formulario-agenda .campo label {
+    flex-basis: 100px;
+    font-weight: 600;
+    color: #000000;
+}
+.formulario-agenda .campo input {
+    flex-basis: 300px;
+    height: 30px;
+    padding-left: 1rem;
+}
+.formulario-agenda .campo textarea {
+    flex-basis: 300px;
+    height: 100px;
+    padding-left: 1rem;
+}
+.formulario-agenda .btn-agendar input{
+    background-color: rgba(13,9,75,1);
+    color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid rgba(13,9,75,1);
+    width: 120px;
+    height: 40px;
+}
+.formulario-agenda .btn-agendar input:hover {
+    cursor: pointer;
+}
