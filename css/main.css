@@ -159,7 +159,11 @@ ul {
     color: #000000;
     display: inline-block;
     width: 100%;
-    margin: .8rem 0;
+    padding: .8rem 0;
+}
+.barra nav ul li a:hover {
+    background-color: rgb(62, 53, 187);
+    color: #ffffff;
 }
 .principal {
     padding-top: 2rem;
@@ -183,15 +187,16 @@ ul {
 }
 .buscador .btn-buscar {
     width: 100px;
-    background-color: #dbdbdb;
+    color: #ffffff;
+    background-color: rgba(13,9,75,1);
     border-radius: 30px;
-    border: 1px solid #dbdbdb;
+    border: 1px solid rgba(13,9,75,1);
     height: 45px;
     padding: 0 2rem;
 }
 .buscador .btn-buscar:hover {
-    background-color: rgba(13,9,75,1);
-    border: 1px solid rgba(13,9,75,1);
+    background-color: rgb(62, 53, 187);
+    border: 1px solid rgb(62, 53, 187);
     color: #ffffff;
     cursor: pointer;
 }
@@ -201,16 +206,92 @@ ul {
     grid-column-gap: 6rem;
     grid-row-gap: 6rem;
 }
+
+
+/*
 .lista-vehiculos .vehiculo a{
     text-decoration: none;
     display: inline-block;
     transition: all .3s ease;
+    position: relative;
 }
+
 .lista-vehiculos .vehiculo a:hover{
     transform: scale(1.1);
     border-radius: 20px;
     box-shadow: 0px 0px 50px #666;
 }
+.lista-vehiculos .vehiculo a:hover::after {
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.486);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+*/
+.lista-vehiculos .vehiculo {
+    transition: all .3s ease;
+    position: relative;
+}
+
+.lista-vehiculos .vehiculo:hover{
+    transform: scale(1.1);
+    border-radius: 20px;
+    box-shadow: 0px 0px 50px #666;
+}
+.lista-vehiculos .vehiculo:hover::after {
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.486);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+/*
+.vehiculo {
+    position: relative;
+}
+*/
+.after-btn {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+}
+.after-btn .enlaces {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    text-align: center;
+}
+.after-btn .enlaces a {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 5px 20px;
+    font-size: 1.8rem;
+    margin-right: 1rem;text-decoration: none;
+}
+.after-btn .enlaces a:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+.after-btn .enlaces a:last-of-type {
+    margin-right: 0;
+}
+
+
+
+
 .lista-vehiculos .vehiculo img {
     width: 100%;
     height: 270px;
@@ -231,6 +312,22 @@ ul {
 }
 .lista-vehiculos .vehiculo .info-vehiculo p:last-of-type {
     padding-bottom: 0;
+}
+.estado {
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 2px 10px;
+    float: right;
+    font-weight: 400;
+    font-size: 1.6rem;
+    align-items: center;
+    transform: translateY(-1px);
+}
+.disponible {
+    background-color: #30b92b;
+}
+.no-disponible {
+    background-color: #b82121;
 }
 .site-footer {
     border-top: 1px solid #ffffff;
@@ -284,7 +381,8 @@ ul {
     font-weight: 600;
     color: #000000;
 }
-.formulario-agenda .campo input {
+.formulario-agenda .campo input,
+.formulario-agenda .campo select {
     flex-basis: 300px;
     height: 30px;
     padding-left: 1rem;
@@ -304,4 +402,6 @@ ul {
 }
 .formulario-agenda .btn-agendar input:hover {
     cursor: pointer;
+    background-color: rgb(62, 53, 187);
+    border-color: rgb(62, 53, 187);
 }
