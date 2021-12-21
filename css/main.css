@@ -405,3 +405,28 @@ ul {
     background-color: rgb(62, 53, 187);
     border-color: rgb(62, 53, 187);
 }
+
+/* Editar */
+.cliente {
+    display: flex;
+    color: #000000;
+}
+.cliente p {
+    flex-basis: 300px;
+}
+.formulario-agenda .btn-agendar .btn-eliminar {
+    background-color: #d62e2e;
+    border: #d62e2e;
+    margin-right: 2rem;
+}
+.formulario-agenda .btn-agendar .btn-eliminar:hover {
+    background-color: #e64f4f;
+}
+.formulario-agenda .btn-agendar .btn-cerrar {
+    background-color: #30b92b;
+    border: #30b92b;
+    margin-right: 2rem;
+}
+.formulario-agenda .btn-agendar .btn-cerrar:hover {
+    background-color: #5ce257;
+}
