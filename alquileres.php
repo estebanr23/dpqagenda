@@ -1,6 +1,26 @@
 <?php include_once 'includes/templates/header.php'; ?>
     <main class="principal">
         <div class="contenedor">
+
+            <?php 
+                try {
+                    require_once('includes/funciones/db_conexion.php');
+                    $sql = " SELECT id_reserva, nombre, modelo, categoria, fecha_ini, fecha_fin, hora_ini, hora_fin, estado_reserva ";
+                    $sql .= " FROM reserva ";
+                    $sql .= " INNER JOIN cliente ";
+                    $sql .= " ON reserva.cliente = cliente.id_cliente ";
+                    $sql .= " INNER JOIN vehiculo ";
+                    $sql .= " ON reserva.vehiculo = vehiculo.id_vehiculo ";
+                    $sql .= " INNER JOIN categoria ";
+                    $sql .= " ON reserva.categoria = categoria.id_categoria ";
+                    $sql .= " AND categoria.id_categoria = 1 ";
+                    $sql .= " AND reserva.estado_reserva = 1 ";
+                    $resultado = $conn->query($sql);
+                } catch(\Exception $e) {
+                    echo $e->getMessage();
+                }
+            ?>
+
             <h1 class="centrar-texto h1-margin">Alquileres</h1>
             <div class="contenedor-tabla">
                 <table class="tabla">
@@ -15,6 +35,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php while($alquiler = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
+                            <tr>
+                                <td><a href="editar.php?id=<?php echo $alquiler['id_reserva']; ?>"><?php echo $alquiler['nombre']; ?></a></td>
+                                <td><?php echo $alquiler['modelo']; ?></td>
+                                <td><?php echo $alquiler['fecha_ini']; ?></td>
+                                <td><?php echo $alquiler['fecha_fin']; ?></td>
+                                <td><?php echo $alquiler['hora_ini']; ?></td>
+                                <td><?php echo $alquiler['hora_fin']; ?></td>
+                            </tr>
+                        <?php } ?>
+
+<!--                        
                         <tr>
                             <td><a href="editar.php">Esteban Robert</a></td>
                             <td>Etios</td>
@@ -39,6 +71,7 @@
                             <td>09:00 am</td>
                             <td>18:00 pm</td>
                         </tr>
+-->
                     </tbody>
                 </table>
             </div>

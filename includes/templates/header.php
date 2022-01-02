@@ -1,3 +1,4 @@
+<?php include_once 'includes/funciones/sesiones.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +29,10 @@
                     <li><a href="alquileres.php">Alquileres</a></li>
                     <li><a href="testdrive.php">TestDrive</a></li>
                     <li><a href="prestamos.php">Prestamos</a></li>
-                    <li><a href="#">Cerrar Sesión</a></li>
+                    <li>
+                        <a href="#"><?php echo $_SESSION['nombre']; ?></a>
+                    </li>
+                    <!--<li><a href="#">Cerrar Sesión</a></li>-->
                 </ul>
             </nav>
         </div>

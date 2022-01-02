@@ -1,8 +1,27 @@
-<?php include_once 'includes/templates/header.php'; ?>
+<?php include_once 'includes/templates/header.php'; 
+    $buscador = $_POST['buscador'];
+?>
+
     <main class="principal">
         <div class="contenedor">
             <h1 class="centrar-texto h1-margin">Resultado de Busqueda</h1>
             <div class="contenedor-tabla">
+
+            <?php 
+                require_once('includes/funciones/db_conexion.php');
+                $sql = " SELECT id_cliente, nombre, id_reserva, modelo, categoria, fecha_ini, fecha_fin, hora_ini, hora_fin, estado_reserva ";
+                $sql .= " FROM cliente ";
+                $sql .= " INNER JOIN reserva ";
+                $sql .= " ON reserva.cliente = cliente.id_cliente ";
+                $sql .= " INNER JOIN vehiculo ";
+                $sql .= " ON reserva.vehiculo = vehiculo.id_vehiculo ";
+                $sql .= " INNER JOIN categoria ";
+                $sql .= " ON reserva.categoria = categoria.id_categoria ";
+                $sql .= " AND nombre LIKE '%$buscador%'";
+                $sql .= " AND estado_reserva = 1 ";
+                $resultado = $conn->query($sql);
+            ?>
+
                 <table class="tabla">
                     <thead>
                         <tr>
@@ -10,17 +29,23 @@
                             <th>Vehiculo</th>
                             <th>Fecha de Inicio</th>
                             <th>Fecha de Fin</th>
-                            <th>Precedencia</th>
+                            <th>Hora de Inicio</th>
+                            <th>Hora de Fin</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Esteban Robert</td>
-                            <td>Etios</td>
-                            <td>15/12/2021</td>
-                            <td>20/12/2021</td>
-                            <td>Toyota del Parque</td>
-                        </tr>
+                        <?php while ($reserva = $resultado->fetch_assoc()) { ?>
+                            <tr>
+                                <td><a href="editar.php?id=<?php echo $reserva['id_reserva']; ?>"><?php echo $reserva['nombre']; ?></a></td>
+                                <td><?php echo $reserva['modelo']; ?></td>
+                                <td><?php echo $reserva['fecha_ini']; ?></td>
+                                <td><?php echo $reserva['fecha_fin']; ?></td>
+                                <td><?php echo $reserva['hora_ini']; ?></td>
+                                <td><?php echo $reserva['hora_fin']; ?></td>
+                            </tr>
+                        <?php } ?>
+
+                        <!--
                         <tr>
                             <td>Fernando Rojas</td>
                             <td>Yaris</td>
@@ -35,6 +60,7 @@
                             <td>13/10/2021</td>
                             <td>Toyota del Parque</td>
                         </tr>
+                        -->
                     </tbody>
                 </table>
             </div>

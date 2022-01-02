@@ -1,4 +1,9 @@
-<?php include_once 'includes/templates/header.php'; ?>
+<?php include_once 'includes/templates/header.php';
+include_once 'includes/funciones/db_conexion.php';
+
+$id_vehiculo = $_GET['id'];
+?>
+
     <main class="principal">
         <div class="contenedor">
 
@@ -13,15 +18,15 @@
                     $sql .= " ON reserva.vehiculo = vehiculo.id_vehiculo ";
                     $sql .= " INNER JOIN categoria ";
                     $sql .= " ON reserva.categoria = categoria.id_categoria ";
-                    $sql .= " AND categoria.id_categoria = 3 ";
-                    $sql .= " AND reserva.estado_reserva = 1 ";
+                    $sql .= " AND id_vehiculo = $id_vehiculo ";
+                    $sql .= " AND estado_reserva = 1 ";
                     $resultado = $conn->query($sql);
                 } catch(\Exception $e) {
                     echo $e->getMessage();
                 }
             ?>
 
-            <h1 class="centrar-texto h1-margin">Prestamos</h1>
+            <h1 class="centrar-texto h1-margin">Alquileres</h1>
             <div class="contenedor-tabla">
                 <table class="tabla">
                     <thead>
@@ -35,14 +40,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while($prestamo = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
+                        <?php while($alquiler = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
                             <tr>
-                                <td><a href="editar.php?id=<?php echo $prestamo['id_reserva']; ?>"><?php echo $prestamo['nombre']; ?></a></td>
-                                <td><?php echo $prestamo['modelo']; ?></td>
-                                <td><?php echo $prestamo['fecha_ini']; ?></td>
-                                <td><?php echo $prestamo['fecha_fin']; ?></td>
-                                <td><?php echo $prestamo['hora_ini']; ?></td>
-                                <td><?php echo $prestamo['hora_fin']; ?></td>
+                                <td><a href="editar.php?id=<?php echo $alquiler['id_reserva']; ?>"><?php echo $alquiler['nombre']; ?></a></td>
+                                <td><?php echo $alquiler['modelo']; ?></td>
+                                <td><?php echo $alquiler['fecha_ini']; ?></td>
+                                <td><?php echo $alquiler['fecha_fin']; ?></td>
+                                <td><?php echo $alquiler['hora_ini']; ?></td>
+                                <td><?php echo $alquiler['hora_fin']; ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -50,4 +55,5 @@
             </div>
         </div>     
     </main>    
+
 <?php include_once 'includes/templates/footer.php'; ?>
