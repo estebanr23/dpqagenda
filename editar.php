@@ -74,13 +74,13 @@
                     <input type="number" placeholder="Total" name="total" value="<?php echo $reserva['total']; ?>">
                 </div>
 
-                <!--<input type="hidden" value="0">  Debe tomer el valor 1 al cerrar la reserva -->
+                <input type="hidden" id="estado_reserva" name="estado_reserva" value="1"> <!-- Debe tomer el valor 1 al cerrar la reserva -->
                 <input type="hidden" name="id_reserva" value="<?php echo $reserva['id_reserva']; ?>">
                 <input type="hidden" name="reg-reserva" value="actualizar">
 
                 <div class="btn-agendar centrar-texto">
                     <input type="button" value="Eliminar" class="btn-eliminar"> <!-- Eliminar Reserva -->
-                    <input type="button" value="Cerrar" class="btn-cerrar"> <!-- Cerrar Reserva -->
+                    <input type="button" id="cerrar-reserva" value="Cerrar" class="btn-cerrar"> <!-- Cerrar Reserva -->
                     <input type="submit" value="Guardar">
                 </div>
             </form>

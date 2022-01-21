@@ -5,5 +5,9 @@
         </div>
     </footer>
     <script src="js/main.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
+    <script src="js/user-ajax.js"></script>
 </body>
 </html>

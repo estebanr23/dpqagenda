@@ -34,25 +34,40 @@
             <li><a href="dashboard.php"><i class="fa fa-circle-o"></i> Dashboard</a></li>
           </ul>
         </li>
+
+        <!-- Admins -->
+        <?php if($_SESSION['nivel'] == 1): ?>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span>Administradores</span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="lista-admin.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
+              <li><a href="crear-admin.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar</a></li>
+            </ul>
+          </li>
+        <?php endif; ?>
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-calendar"></i>
-            <span>Eventos</span>
+            <span>Vehiculos</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="lista-evento.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
-            <li><a href="crear-evento.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar</a></li>
+            <li><a href="lista-vehiculo.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
+            <li><a href="crear-vehiculo.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar</a></li>
           </ul>
         </li>
 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-book" aria-hidden="true"></i>
-            <span>Categoria Eventos</span>
+            <span>Clientes</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="lista-categoria.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
-            <li><a href="crear-categoria.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar</a></li>
+            <li><a href="lista-cliente.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
+            <li><a href="crear-cliente.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar</a></li>
           </ul>
         </li>
 

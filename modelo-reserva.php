@@ -114,7 +114,7 @@ if($_POST['reg-reserva'] == 'actualizar') {
     $descripcion = $_POST['descripcion'];
     $total = $_POST['total'];
     // Variable que cambia con JavaScript
-    $estado_reserva = 2;
+    $estado_reserva = $_POST['estado_reserva'];
     $id_reserva = $_POST['id_reserva'];
 
     try {
@@ -125,7 +125,7 @@ if($_POST['reg-reserva'] == 'actualizar') {
         if($stmt->affected_rows) {
             $respuesta = array(
                 'respuesta' => 'exito',
-                'id_actualizado' => $stmt->insert_id
+                'id_actualizado' => $stmt->insert_id // No muestra el id de reserva actualizada
             );
         } else {
             $respuesta = array(

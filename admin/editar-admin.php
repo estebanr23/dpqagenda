@@ -1,6 +1,7 @@
 <?php include_once 'funciones/sesiones.php';
 
-      include_once 'funciones/funciones.php';
+      //include_once 'funciones/funciones.php';
+      include_once '../includes/funciones/db_conexion.php';
 
       include_once 'templates/header.php'; 
       $id = $_GET['id'];
@@ -33,7 +34,7 @@
               <h3 class="box-title">Editar Administrador</h3>
             </div>
             <?php
-              $sql = "SELECT * FROM `admins` WHERE `id_admin` = $id ";
+              $sql = "SELECT * FROM `admins` WHERE `id_admins` = $id ";
               $resultado = $conn->query($sql);
               $admin = $resultado->fetch_assoc();
             ?>
