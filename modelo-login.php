@@ -12,8 +12,8 @@
             if($stmt->affected_rows) {
                 $existe = $stmt->fetch();
                 if($existe) {
-                    //if(password_verify($password, $password_admin)) {
-                    if($password == $password_admin) {
+                    if(password_verify($password, $password_admin)) {
+                    //if($password == $password_admin) {
                         session_start(); // Creo una session con esta funcion luego de verificar la contraseña.
                         $_SESSION['usuario'] = $usuario_admin; // Creo variables en la session y le asigno valores.
                         $_SESSION['nombre'] = $nombre_admin;

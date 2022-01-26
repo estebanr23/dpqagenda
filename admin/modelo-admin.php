@@ -16,6 +16,7 @@ $password = $_POST['password'];
 $id_registro = $_POST['id_registro'];
 $nivel = 1;
 
+// Crear admin
 if ($_POST['registro'] == 'nuevo') {
     // die(json_encode($_POST)); Detiene la ejecucion (como un break) y muestra por consola los datos de _POST.
     // $usuario = $_POST['usuario'];

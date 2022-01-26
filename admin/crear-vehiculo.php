@@ -29,7 +29,7 @@
               <h3 class="box-title">Crear Admin</h3>
             </div>
             <!-- form start -->
-            <form role="form" name="guardar_registro" id="guardar_registro" method="POST" action="modelo-vehiculo.php">
+            <form role="form" name="guardar_registro" id="guardar-registro-archivo" method="POST" action="modelo-vehiculo.php" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label for="modelo">Modelo:</label>
@@ -49,9 +49,10 @@
                   <span id="resultado_password" class="help-block"></span>
                 </div>
                 <div class="form-group">
-                  <label for="url_imagen">Url:</label>
-                  <input type="text" class="form-control" id="url_imagen" name="url_imagen" placeholder="URL">
-                  <span id="resultado_password" class="help-block"></span>
+                  <label for="imagen_invitado">File input</label>
+                  <input type="file" class="form-control" id="imagen_vehiculo" name="archivo_imagen">
+
+                  <p class="help-block">Añada la imagen aqui</p>
                 </div>
               </div>
               <!-- /.box-body -->

@@ -31,7 +31,7 @@
                     <li><a href="testdrive.php">TestDrive</a></li>
                     <li><a href="prestamos.php">Prestamos</a></li>
                     <li>
-                        <a href="#"><?php echo $_SESSION['nombre']; ?></a>
+                        <a href="#"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre']; ?></a>
                     </li>
                     <!--<li><a href="#">Cerrar Sesión</a></li>-->
                 </ul>

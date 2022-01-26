@@ -20,7 +20,7 @@
             <div class="lista-vehiculos" id="lista-vehiculos">
                 <?php while ($vehiculo = $resultado->fetch_assoc()) { ?>
                     <article class="vehiculo">
-                        <img src="img/etios.jpg">
+                        <img src="img/vehiculos/<?php echo $vehiculo['url_imagen']; ?>">
                         <div class="info-vehiculo">
                             <p>Modelo: <span><?php echo $vehiculo['modelo']; ?></span></p>
                             <p>Dominio: <span><?php echo $vehiculo['dominio']; ?></span></p>

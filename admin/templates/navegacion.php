@@ -51,7 +51,7 @@
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-calendar"></i>
+            <i class="fa fa-car"></i>
             <span>Vehiculos</span>
           </a>
           <ul class="treeview-menu">
@@ -73,47 +73,13 @@
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-user-circle" aria-hidden="true"></i>
-            <span>Invitados</span>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <span>Reservas</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="lista-invitados.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
-            <li><a href="crear-invitado.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar</a></li>
-          </ul>
-        </li>
-
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-address-card" aria-hidden="true"></i>
-            <span>Registrados</span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="lista-registrados.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
-            <li><a href="crear-registro.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar</a></li>
-          </ul>
-        </li>
-
-        <?php if($_SESSION['nivel'] == 1): ?>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-user" aria-hidden="true"></i>
-              <span>Administradores</span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="lista-admin.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
-              <li><a href="crear-admin.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar</a></li>
-            </ul>
-          </li>
-        <?php endif; ?>
-
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-comments" aria-hidden="true"></i>
-            <span>Testimoniales</span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="lista-admin.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
-            <li><a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar</a></li>
+            <li><a href="lista-reserva.php"><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Todos</a></li>
+            <li><a href="lista-reserva-open.php"><i class="fa fa-exclamation" aria-hidden="true"></i> Abiertas</a></li>
+            <li><a href="lista-reserva-close.php"><i class="fa fa-check" aria-hidden="true"></i> Cerradas</a></li>
           </ul>
         </li>
       </ul>

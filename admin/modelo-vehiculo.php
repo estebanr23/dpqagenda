@@ -7,15 +7,30 @@ $modelo = $_POST['modelo'];
 $dominio = $_POST['dominio'];
 $titular = $_POST['titular'];
 $anio = $_POST['anio'];
-$url_imagen = $_POST['url_imagen'];
 $id_registro = $_POST['id_registro'];
 $estado_vehiculo = 1;
 
+// Crear vehiculo
 if ($_POST['registro'] == 'nuevo') {
+
+    $directorio = "../img/vehiculos/";
+
+    if(!is_dir($directorio)) {
+        mkdir($directorio, 0755, true); 
+    }
+
+    if(move_uploaded_file($_FILES['archivo_imagen']['tmp_name'], $directorio . $_FILES['archivo_imagen']['name'])) {
+        $imagen_url = $_FILES['archivo_imagen']['name'];
+        $imagen_resultado = "Se subio correctamente";
+    } else {
+        $respuesta = array(
+            'respuesta' => error_get_last()
+        );
+    }
 
     try {
         $stmt = $conn->prepare("INSERT INTO vehiculo (modelo, dominio, titular, anio, estado_vehiculo, url_imagen) VALUES (?,?,?,?,?,?)");
-        $stmt->bind_param("ssssis", $modelo, $dominio, $titular, $anio, $estado_vehiculo, $url_imagen);
+        $stmt->bind_param("ssssis", $modelo, $dominio, $titular, $anio, $estado_vehiculo, $imagen_url);
         $stmt->execute();
         $id_registro = $stmt->insert_id; 
         if($id_registro > 0) {
@@ -37,12 +52,27 @@ if ($_POST['registro'] == 'nuevo') {
     die(json_encode($respuesta)); // Esta linea me devuelve como respuesta un array asociativo de php (por consola) al que puedo acceder con js como si fuera un objeto.
 }
 
-// Editar admin
+// Editar vehiculo
 if ($_POST['registro'] == 'actualizar') {
+
+    $directorio = "../img/vehiculos/";
+
+    if(!is_dir($directorio)) {
+        mkdir($directorio, 0755, true); 
+    }
+
+    if(move_uploaded_file($_FILES['archivo_imagen']['tmp_name'], $directorio . $_FILES['archivo_imagen']['name'])) {
+        $imagen_url = $_FILES['archivo_imagen']['name'];
+        $imagen_resultado = "Se subio correctamente";
+    } else {
+        $respuesta = array(
+            'respuesta' => error_get_last()
+        );
+    }
 
     try {
         $stmt = $conn->prepare("UPDATE vehiculo SET modelo = ?, dominio = ?, titular = ?, anio = ?, estado_vehiculo = ?, url_imagen = ? WHERE id_vehiculo = ?");
-        $stmt->bind_param("ssssisi", $modelo, $dominio, $titular, $anio, $estado_vehiculo, $url_imagen, $id_registro);      
+        $stmt->bind_param("ssssisi", $modelo, $dominio, $titular, $anio, $estado_vehiculo, $imagen_url, $id_registro);      
         $stmt->execute();
         // Crear campo editado
         if($stmt->affected_rows) {
@@ -66,7 +96,7 @@ if ($_POST['registro'] == 'actualizar') {
     die(json_encode($respuesta));
 }
 
-// Eliminar Vehiculo
+// Eliminar vehiculo
 if ($_POST['registro'] == 'eliminar') { 
     $id_borrar = $_POST['id'];
 
