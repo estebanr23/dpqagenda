@@ -12,7 +12,7 @@ lista.addEventListener('mouseover', function({target}) {
         })
     }
     
-})
+});
 
 
 // Cambiar estado de reserva
@@ -24,3 +24,17 @@ btnCerrar.addEventListener('click', function() {
     console.log(campoEstado.value);
 });
 */
+
+// Mostrar opciones de Sub Menu
+var usuario = document.getElementById("usuario-menu");
+var opciones = document.getElementById("opciones-menu");
+var subMenu = document.querySelector(".sub-menu");
+console.log(subMenu);
+
+usuario.addEventListener('mouseenter', function() {
+    opciones.style.display="block";
+});
+
+subMenu.addEventListener('mouseleave', function() {
+    opciones.style.display="none";
+});

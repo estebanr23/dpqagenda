@@ -113,12 +113,18 @@ ul {
 }
 .formulario-login .btn-login {
     background-color: rgb(226, 44, 44);
+    border: rgb(226, 44, 44);
     color: #ffffff;
     font-size: 1.4rem;
     border: none;
     border-radius: 4px;
     padding: 1rem 2rem;
     margin: 1rem;
+}
+.formulario-login .btn-login:hover {
+    cursor: pointer;
+    background-color: rgb(221, 83, 83);
+    border: rgb(221, 83, 83);
 }
 
 /* Index */
@@ -164,6 +170,16 @@ ul {
 .barra nav ul li a:hover {
     background-color: rgb(62, 53, 187);
     color: #ffffff;
+}
+.barra nav ul li .sub-menu {
+    display: block;
+    position: relative;
+}
+.barra nav ul li #opciones-menu {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: #ffffff;
 }
 .principal {
     padding-top: 2rem;
@@ -421,6 +437,7 @@ ul {
 }
 .formulario-agenda .btn-agendar .btn-eliminar:hover {
     background-color: #e64f4f;
+    border: #e64f4f;
 }
 .formulario-agenda .btn-agendar .btn-cerrar {
     background-color: #30b92b;
