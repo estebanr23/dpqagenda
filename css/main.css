@@ -126,6 +126,12 @@ ul {
     background-color: rgb(221, 83, 83);
     border: rgb(221, 83, 83);
 }
+.formulario-login .div-mensaje {
+    display: none;
+}
+.formulario-login #mensaje-error {
+    color: rgb(226, 44, 44);;
+}
 
 /* Index */
 .fondo-color {
@@ -408,7 +414,7 @@ ul {
     height: 100px;
     padding-left: 1rem;
 }
-.formulario-agenda .btn-agendar input{
+.formulario-agenda .btn-agendar input {
     background-color: rgba(13,9,75,1);
     color: #ffffff;
     border-radius: 10px;

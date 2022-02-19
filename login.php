@@ -30,17 +30,25 @@
         
         <div class="formulario-login centrar-texto">
             <h3>Iniciar Sesión</h3>
-            <form action="modelo-login.php" method="POST">
+            <form action="modelo-login.php" id="login-admin" method="POST">
                 <div class="campo">
                     <input type="text" name="usuario" placeholder="Usuario">
                 </div>
                 <div class="campo">
                     <input type="password" name="password" placeholder="Contraseña">
                 </div>
+                <div class="div-mensaje">
+                    <p id="mensaje-error">El usuario o contraseña son incorrectas.</p>
+                </div>
                 <input type="hidden" name="login-admin" value="1">
                 <input type="submit" class="btn-login" value="Ingresar">
             </form>
         </div>
     </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
+    <script src="js/login-ajax.js"></script>
 </body>
 </html>

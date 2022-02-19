@@ -37,7 +37,7 @@ if ($_POST['registro'] == 'nuevo') {
 if ($_POST['registro'] == 'actualizar') {
     
     try {
-        $stmt = $conn->prepare('UPDATE cliente SET nombre = ?, identificacion = ? WHERE id_cliente = ?');
+        $stmt = $conn->prepare('UPDATE cliente SET nombre = ?, identificacion = ?, editado = NOW() WHERE id_cliente = ?');
         $stmt->bind_param("ssi", $nombre, $iden, $id_registro);
         $stmt->execute();
         if($stmt->affected_rows) {
@@ -61,7 +61,7 @@ if ($_POST['registro'] == 'actualizar') {
     die(json_encode($respuesta));
 }
 
-// Eliminar admin
+// Eliminar cliente
 if ($_POST['registro'] == 'eliminar') { 
     $id_borrar = $_POST['id'];
 
@@ -69,7 +69,7 @@ if ($_POST['registro'] == 'eliminar') {
         $stmt = $conn->prepare('DELETE FROM cliente WHERE id_cliente = ? ');
         $stmt->bind_param('i', $id_borrar);
         $stmt->execute();
-        if($stmt->affected_rows){
+        if($stmt->affected_rows > 0){
             $respuesta = array(
                 'respuesta' => 'exito',
                 'id_eliminado' => $id_borrar

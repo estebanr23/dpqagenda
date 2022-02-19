@@ -104,7 +104,7 @@ if ($_POST['registro'] == 'eliminar') {
         $stmt = $conn->prepare('DELETE FROM vehiculo WHERE id_vehiculo = ? ');
         $stmt->bind_param('i', $id_borrar);
         $stmt->execute();
-        if($stmt->affected_rows){
+        if($stmt->affected_rows > 0){
             $respuesta = array(
                 'respuesta' => 'exito',
                 'id_eliminado' => $id_borrar

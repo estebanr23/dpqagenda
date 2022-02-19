@@ -143,5 +143,4 @@ if($_POST['reg-reserva'] == 'actualizar') {
     die(json_encode($respuesta));
 }
 
-
 ?>

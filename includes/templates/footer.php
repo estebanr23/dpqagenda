@@ -4,6 +4,7 @@
             <p class="copyright">Todos los derechos reservados 2022 &copy;</p>
         </div>
     </footer>
+    <script src="js/reserva.js"></script>
     <script src="js/main.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/plugins.js"></script>

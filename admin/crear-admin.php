@@ -40,6 +40,14 @@
                   <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo">
                 </div>
                 <div class="form-group">
+                  <label for="nivel">Nivel:</label>
+                  <select class="form-control" name="nivel" id="nivel">
+                    <option value="1">Administrador</option>
+                    <option value="2">Normal</option>
+                    <option value="3">Consultor</option>
+                  </select>
+                </div>
+                <div class="form-group">
                   <label for="password">Password:</label>
                   <input type="password" class="form-control" id="password" name="password" placeholder="Password para Iniciar Sesion">
                 </div>

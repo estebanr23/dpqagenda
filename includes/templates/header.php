@@ -30,9 +30,6 @@
                     <li><a href="alquileres.php">Alquileres</a></li>
                     <li><a href="testdrive.php">TestDrive</a></li>
                     <li><a href="prestamos.php">Prestamos</a></li>
-                <!--<li>
-                        <a href="#"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre']; ?></a>
-                    </li> -->
                     <li>
                         <ul class="sub-menu">
                             <li id="usuario-menu"><a href="#"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre']; ?></a></li>

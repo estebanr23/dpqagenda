@@ -116,4 +116,109 @@ $(document).ready(function() {
 
     }); //.borrar-registro
 
+
+    // Reabrir Reserva
+    $('.reabrir_reserva').on('click', function(e) {
+        e.preventDefault(); 
+        
+        var id = $(this).attr('data-id');
+        var tipo = $(this).attr('data-tipo');
+
+        swal({
+            title: 'Desea reabrir la reserva?',
+            text: "La misma estara disponible para ser modificada",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Reabrir!',
+            cancelButtonText: 'Cancelar'
+          }).then((result) => {
+                if(result.value) {
+                    $.ajax({ // ajax permite enviar datos al servidor por medio del metodo POST aunque no haya un formulario.
+                        type:'post',
+                        data: {
+                            id: id,
+                            registro: 'reabrir'
+                        },
+                        url: 'modelo-'+tipo+'.php',
+                        success:function(data) {
+                            var resultado = JSON.parse(data); // Convierte el array en un objeto JavaScript.
+                            if(resultado.respuesta == 'exito') {
+                                swal(
+                                    'Correcto',
+                                    'Reserva abierta',
+                                    'success'
+                                )
+                                // Permite eliminar un registro sin recargar la pagina con JQuery.
+                                jQuery('[data-id="'+ resultado.id_actualizado +'"]').parents('tr').remove();
+                            } else {
+                                swal(
+                                    'Error!',
+                                    'No se pudo abrir la reserva',
+                                    'error'
+                                )
+                            }
+                        }
+                    }) // ajax
+                    
+                } // if  
+
+          }); //then
+
+    }); //.reabrir-reserva
+
+
+
+    // Cerrar Reserva
+    $('.cerrar_reserva').on('click', function(e) {
+        e.preventDefault(); 
+        
+        var id = $(this).attr('data-id');
+        var tipo = $(this).attr('data-tipo');
+
+        swal({
+            title: 'Desea cerrar la reserva?',
+            text: "La misma no estara disponible para ser modificada",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Cerrar!',
+            cancelButtonText: 'Cancelar'
+          }).then((result) => {
+                if(result.value) {
+                    $.ajax({ // ajax permite enviar datos al servidor por medio del metodo POST aunque no haya un formulario.
+                        type:'post',
+                        data: {
+                            id: id,
+                            registro: 'cerrar'
+                        },
+                        url: 'modelo-'+tipo+'.php',
+                        success:function(data) {
+                            var resultado = JSON.parse(data); // Convierte el array en un objeto JavaScript.
+                            if(resultado.respuesta == 'exito') {
+                                swal(
+                                    'Correcto',
+                                    'Reserva cerrada',
+                                    'success'
+                                )
+                                // Permite eliminar un registro sin recargar la pagina con JQuery.
+                                jQuery('[data-id="'+ resultado.id_actualizado +'"]').parents('tr').remove();
+                            } else {
+                                swal(
+                                    'Error!',
+                                    'No se pudo cerrar la reserva',
+                                    'error'
+                                )
+                            }
+                        }
+                    }) // ajax
+                    
+                } // if  
+
+          }); //then
+
+    }); //.cerrar-reserva
+
 });

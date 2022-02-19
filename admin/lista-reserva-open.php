@@ -70,8 +70,8 @@
                         <td><?php echo $reserva['fecha_fin']; ?></td>
                         <td><?php echo $reserva['total']; ?></td>
                         <td>
-                          <a href="editar-reserva.php?id=<?php echo $reserva['id_reserva']; ?>" class="btn bg-orange btn-flat margin">
-                            <i class="fa fa-pencil"></i>
+                          <a href="#" data-id="<?php echo $reserva['id_reserva']; ?>" data-tipo="reserva" class="btn bg-orange btn-flat margin cerrar_reserva">
+                            <i class="fa fa-lock"></i>
                           </a>
                           <a href="#" data-id="<?php echo $reserva['id_reserva']; ?>" data-tipo="reserva" class="btn bg-maroon bnt-flat margin borrar_registro">
                             <i class="fa fa-trash"></i>

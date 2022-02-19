@@ -1,40 +1,39 @@
-// Mostrar botones de reserva y agendar
-var lista = document.getElementById("lista-vehiculos");
-var botones;
+(function(){
+    "use strict";
 
-lista.addEventListener('mouseover', function({target}) {
-    if(target.tagName === "ARTICLE") {
-        botones = target.querySelector(".after-btn");
-        botones.style.display="block";
+    document.addEventListener('DOMContentLoaded', function(){
 
-        botones.addEventListener('mouseleave', function() {
-            botones.style.display="none";
-        })
-    }
+        // Mostrar botones de reserva y agendar
+        var lista = document.getElementById("lista-vehiculos");
+        var botones;
+
+        if(lista) {
+            lista.addEventListener('mouseover', function({target}) {
+                if(target.tagName === "ARTICLE") {
+                    botones = target.querySelector(".after-btn");
+                    botones.style.display="block";
     
-});
+                    botones.addEventListener('mouseleave', function() {
+                        botones.style.display="none";
+                    })
+                }
+                
+            });
+        }
 
+        // Mostrar opciones de Sub Menu
+        var usuario = document.getElementById("usuario-menu");
+        var opciones = document.getElementById("opciones-menu");
+        var subMenu = document.querySelector(".sub-menu");
+        
+        usuario.addEventListener('mouseenter', function() {
+            opciones.style.display="block";
+        });
 
-// Cambiar estado de reserva
-/*
-var btnCerrar = document.getElementById("cerrar-reserva");
-var campoEstado = document.getElementById("estado_reserva");
-btnCerrar.addEventListener('click', function() {
-    campoEstado.value = 2;
-    console.log(campoEstado.value);
-});
-*/
+        subMenu.addEventListener('mouseleave', function() {
+            opciones.style.display="none";
+        });
 
-// Mostrar opciones de Sub Menu
-var usuario = document.getElementById("usuario-menu");
-var opciones = document.getElementById("opciones-menu");
-var subMenu = document.querySelector(".sub-menu");
-console.log(subMenu);
+    }); // DOM CONTENT LOADED
 
-usuario.addEventListener('mouseenter', function() {
-    opciones.style.display="block";
-});
-
-subMenu.addEventListener('mouseleave', function() {
-    opciones.style.display="none";
-});
+})();

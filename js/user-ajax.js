@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // Formulario reserva        
     $('#form-agenda').on('submit', function(e) {
         e.preventDefault();
 

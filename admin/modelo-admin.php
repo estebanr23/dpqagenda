@@ -12,9 +12,9 @@ include_once '../includes/funciones/db_conexion.php';
 //include_once '/funciones/funciones.php';
 $usuario = $_POST['usuario'];
 $nombre = $_POST['nombre'];
+$nivel = $_POST['nivel'];
 $password = $_POST['password'];
 $id_registro = $_POST['id_registro'];
-$nivel = 1;
 
 // Crear admin
 if ($_POST['registro'] == 'nuevo') {
@@ -63,16 +63,16 @@ if ($_POST['registro'] == 'actualizar') {
     try {
         // empty() cheque si una variable esta vacia.
         if(empty($_POST['password'])) {
-            $stmt = $conn->prepare("UPDATE admins SET usuario = ?, nombre = ?, editado = NOW() WHERE id_admins = ?");
-            $stmt->bind_param("ssi", $usuario, $nombre, $id_registro);
+            $stmt = $conn->prepare("UPDATE admins SET usuario = ?, nombre = ?, nivel = ?, editado = NOW() WHERE id_admins = ?");
+            $stmt->bind_param("ssii", $usuario, $nombre, $nivel, $id_registro);
         } else {
             $opciones = array(
                 'cost' => 12
             );
     
             $hash_password = password_hash($password, PASSWORD_BCRYPT, $opciones);
-            $stmt = $conn->prepare('UPDATE admins SET usuario = ?, nombre = ?, password = ?, editado = NOW() WHERE id_admins = ?');
-            $stmt->bind_param("sssi", $usuario, $nombre, $hash_password, $id_registro);
+            $stmt = $conn->prepare('UPDATE admins SET usuario = ?, nombre = ?, password = ?, nivel = ?, editado = NOW() WHERE id_admins = ?');
+            $stmt->bind_param("sssii", $usuario, $nombre, $hash_password, $nivel, $id_registro);
         }
         
         $stmt->execute();
@@ -105,7 +105,7 @@ if ($_POST['registro'] == 'eliminar') {
         $stmt = $conn->prepare('DELETE FROM admins WHERE id_admins = ? ');
         $stmt->bind_param('i', $id_borrar);
         $stmt->execute();
-        if($stmt->affected_rows){
+        if($stmt->affected_rows > 0){
             $respuesta = array(
                 'respuesta' => 'exito',
                 'id_eliminado' => $id_borrar
