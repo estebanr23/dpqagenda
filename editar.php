@@ -27,7 +27,7 @@
 
         <h1 class="centrar-texto h1-margin">Editar Reserva</h1>
         <div class="formulario-agenda">
-            <form action="modelo-reserva.php" method="POST">
+            <form action="modelo-reserva.php" id="form-agenda" method="POST">
                 <div class="campo cliente">
                     <label for="cliente">Cliente</label>
                     <p><?php echo $reserva['nombre']; ?></p>

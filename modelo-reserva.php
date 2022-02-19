@@ -118,7 +118,7 @@ if($_POST['reg-reserva'] == 'actualizar') {
     $id_reserva = $_POST['id_reserva'];
 
     try {
-        $stmt = $conn->prepare('UPDATE reserva SET cliente = ?, vehiculo = ?, categoria = ?, fecha_ini = ?, fecha_fin = ?, hora_ini = ?, hora_fin = ?, descripcion = ?, total = ?, estado_reserva = ? WHERE id_reserva = ?');
+        $stmt = $conn->prepare('UPDATE reserva SET cliente = ?, vehiculo = ?, categoria = ?, fecha_ini = ?, fecha_fin = ?, hora_ini = ?, hora_fin = ?, descripcion = ?, total = ?, estado_reserva = ?, editado = NOW() WHERE id_reserva = ?');
         $stmt->bind_param('iiisssssdii', $cliente, $vehiculo, $categoria, $fecha_ini, $fecha_fin, $hora_ini, $hora_fin, $descripcion, $total, $estado_reserva, $id_reserva);
         $stmt->execute();
 
