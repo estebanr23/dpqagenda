@@ -6,7 +6,8 @@
 
       include_once 'templates/navegacion.php'; 
 
-      include_once 'funciones/funciones.php'; 
+      //include_once 'funciones/funciones.php'; 
+      include_once '../includes/funciones/db_conexion.php';
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -15,38 +16,32 @@
     <section class="content-header">
       <h1>
         Dashboard
-        <small>Informacion sobre el evento</small>
+        <small>Informacion</small>
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
-        <div class="row">
-            <div class="box-body chart-responsive">
-              <div class="chart" id="grafica-registros" style="height: 300px;"></div>
-            </div>
-        </div>
-
         <h2 class="page-header">Resumen de Registros</h2>
 
         <div class="row">
             <div class="col-lg-3 col-xs-6">
                 <?php 
-                    $sql = "SELECT COUNT(id_registrados) AS registros FROM registrados ";
+                    $sql = "SELECT COUNT(id_cliente) AS clientes FROM cliente ";
                     $resultado = $conn->query($sql);
-                    $registrados = $resultado->fetch_assoc();
+                    $clientes = $resultado->fetch_assoc();
                 ?>
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                    <h3><?php echo $registrados['registros']; ?></h3>
+                    <h3><?php echo $clientes['clientes']; ?></h3>
 
-                    <p>Total Registrados</p>
+                    <p>Total Clientes</p>
                     </div>
                     <div class="icon">
                     <i class="fa fa-user"></i>
                     </div>
-                    <a href="lista-registrados.php" class="small-box-footer">
+                    <a href="lista-cliente.php" class="small-box-footer">
                     Mas Información <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
@@ -55,21 +50,21 @@
 
             <div class="col-lg-3 col-xs-6">
                 <?php 
-                    $sql = "SELECT COUNT(id_registrados) AS registros FROM registrados WHERE pagado = 1";
+                    $sql = "SELECT COUNT(id_vehiculo) AS vehiculos FROM vehiculo";
                     $resultado = $conn->query($sql);
-                    $registrados = $resultado->fetch_assoc();
+                    $vehiculos = $resultado->fetch_assoc();
                 ?>
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                    <h3><?php echo $registrados['registros']; ?></h3>
+                    <h3><?php echo $vehiculos['vehiculos']; ?></h3>
 
-                    <p>Total Pagados</p>
+                    <p>Total Vehiculos</p>
                     </div>
                     <div class="icon">
                     <i class="fa fa-users"></i>
                     </div>
-                    <a href="lista-registrados.php" class="small-box-footer">
+                    <a href="lista-vehiculo.php" class="small-box-footer">
                     Mas Informaión <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
@@ -78,21 +73,21 @@
 
             <div class="col-lg-3 col-xs-6">
                 <?php 
-                    $sql = "SELECT COUNT(id_registrados) AS registros FROM registrados WHERE pagado = 0 ";
+                    $sql = "SELECT COUNT(id_reserva) AS reservas FROM reserva WHERE estado_reserva = 1";
                     $resultado = $conn->query($sql);
-                    $registrados = $resultado->fetch_assoc();
+                    $reservas = $resultado->fetch_assoc();
                 ?>
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                    <h3><?php echo $registrados['registros']; ?></h3>
+                    <h3><?php echo $reservas['reservas']; ?></h3>
 
-                    <p>Total Sin Pagar</p>
+                    <p>Reservas Abiertas</p>
                     </div>
                     <div class="icon">
                     <i class="fa fa-user-times"></i>
                     </div>
-                    <a href="lista-registrados.php" class="small-box-footer">
+                    <a href="lista-reserva-open.php" class="small-box-footer">
                     Mas Informaión <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
@@ -101,100 +96,28 @@
 
             <div class="col-lg-3 col-xs-6">
                 <?php 
-                    $sql = "SELECT SUM(total_pagado) AS ganancias FROM registrados WHERE pagado = 1 ";
+                    $sql = "SELECT COUNT(id_reserva) AS reservas FROM reserva WHERE estado_reserva = 2";
                     $resultado = $conn->query($sql);
-                    $registrados = $resultado->fetch_assoc();
+                    $reservas = $resultado->fetch_assoc();
                 ?>
                 <!-- small box -->
-                <div class="small-box bg-green">
+                <div class="small-box bg-red">
                     <div class="inner">
-                    <h3>$<?php echo $registrados['ganancias']; ?></h3>
+                    <h3><?php echo $reservas['reservas']; ?></h3>
 
-                    <p>Ganancias Totales</p>
+                    <p>Reservas Cerradas</p>
                     </div>
                     <div class="icon">
-                    <i class="fa fa-usd"></i>
+                    <i class="fa fa-user-times"></i>
                     </div>
-                    <a href="lista-registrados.php" class="small-box-footer">
-                    Mas Información <i class="fa fa-arrow-circle-right"></i>
+                    <a href="lista-reserva-close.php" class="small-box-footer">
+                    Mas Informaión <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
             <!-- ./col -->
         </div>
-
-        <h2 class="page-header">Regalos</h2>
-        <div class="row">
-            <div class="col-lg-3 col-xs-6">
-                <?php 
-                    $sql = "SELECT COUNT(total_pagado) AS pulseras FROM registrados WHERE pagado = 1 AND regalo = 1 ";
-                    $resultado = $conn->query($sql);
-                    $registrados = $resultado->fetch_assoc();
-                ?>
-                <!-- small box -->
-                <div class="small-box bg-teal">
-                    <div class="inner">
-                    <h3><?php echo $registrados['pulseras']; ?></h3>
-
-                    <p>Pulseras</p>
-                    </div>
-                    <div class="icon">
-                    <i class="fa fa-gift"></i>
-                    </div>
-                    <a href="lista-registrados.php" class="small-box-footer">
-                    Mas Información <i class="fa fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- ./col -->
-
-            <div class="col-lg-3 col-xs-6">
-                <?php 
-                    $sql = "SELECT COUNT(total_pagado) AS etiquetas FROM registrados WHERE pagado = 1 AND regalo = 2 ";
-                    $resultado = $conn->query($sql);
-                    $registrados = $resultado->fetch_assoc();
-                ?>
-                <!-- small box -->
-                <div class="small-box bg-maroon">
-                    <div class="inner">
-                    <h3><?php echo $registrados['etiquetas']; ?></h3>
-
-                    <p>Etiquetas</p>
-                    </div>
-                    <div class="icon">
-                    <i class="fa fa-gift"></i>
-                    </div>
-                    <a href="lista-registrados.php" class="small-box-footer">
-                    Mas Información <i class="fa fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- ./col -->
-
-            <div class="col-lg-3 col-xs-6">
-                <?php 
-                    $sql = "SELECT COUNT(total_pagado) AS plumas FROM registrados WHERE pagado = 1 AND regalo = 3 ";
-                    $resultado = $conn->query($sql);
-                    $registrados = $resultado->fetch_assoc();
-                ?>
-                <!-- small box -->
-                <div class="small-box bg-purple-active">
-                    <div class="inner">
-                    <h3><?php echo $registrados['plumas']; ?></h3>
-
-                    <p>Plumas</p>
-                    </div>
-                    <div class="icon">
-                    <i class="fa fa-gift"></i>
-                    </div>
-                    <a href="lista-registrados.php" class="small-box-footer">
-                    Mas Información <i class="fa fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- ./col -->
-
-        </div>
+            <!-- ./row -->
     </section>
     <!-- /.content -->
   </div>

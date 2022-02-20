@@ -5,7 +5,7 @@
 ?>
 
     <div class="contenedor principal">
-        <h1 class="centrar-texto h1-margin">Agendar Cliente</h1>
+        <h1 class="centrar-texto h1-margin">Agendar Reserva</h1>
         <div class="formulario-agenda">
             <form action="modelo-reserva.php" method="POST" id="form-agenda" name="form-agenda">
                 <?php 
@@ -14,13 +14,13 @@
                     $resultado = $conn->query($sql);
                     $cliente = $resultado->fetch_assoc();
                 ?>
-                <div class="campo cliente">
+                <div class="campo">
                     <label for="cliente">Cliente</label>
-                    <p><?php echo $cliente['nombre']; ?></p>
+                    <input type="text" value="<?php echo $cliente['nombre']; ?>" disabled>
                 </div>
-                <div class="campo cliente">
+                <div class="campo">
                     <label for="dni">DNI / CUIT</label>
-                    <p><?php echo $cliente['identificacion']; ?></p>
+                    <input type="text" value="<?php echo $cliente['identificacion']; ?>" disabled>
                 </div>
                 <input type="hidden" name="cliente" value="<?php echo $cliente['id_cliente']; ?>"> <!-- Envia el id del cliente -->
                 

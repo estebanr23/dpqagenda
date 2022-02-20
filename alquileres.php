@@ -15,6 +15,7 @@
                     $sql .= " ON reserva.categoria = categoria.id_categoria ";
                     $sql .= " AND categoria.id_categoria = 1 ";
                     $sql .= " AND reserva.estado_reserva = 1 ";
+                    $sql .= " ORDER BY fecha_ini ";
                     $resultado = $conn->query($sql);
                 } catch(\Exception $e) {
                     echo $e->getMessage();
@@ -45,33 +46,6 @@
                                 <td><?php echo $alquiler['hora_fin']; ?></td>
                             </tr>
                         <?php } ?>
-
-<!--                        
-                        <tr>
-                            <td><a href="editar.php">Esteban Robert</a></td>
-                            <td>Etios</td>
-                            <td>15/12/2021</td>
-                            <td>20/12/2021</td>
-                            <td>09:00 am</td>
-                            <td>18:00 pm</td>
-                        </tr>
-                        <tr>
-                            <td>Fernando Rojas</td>
-                            <td>Yaris</td>
-                            <td>10/11/2021</td>
-                            <td>16/12/2021</td>
-                            <td>09:00 am</td>
-                            <td>18:00 pm</td>
-                        </tr>
-                        <tr>
-                            <td>Federico Aviles</td>
-                            <td>Corolla</td>
-                            <td>2/10/2021</td>
-                            <td>13/10/2021</td>
-                            <td>09:00 am</td>
-                            <td>18:00 pm</td>
-                        </tr>
--->
                     </tbody>
                 </table>
             </div>

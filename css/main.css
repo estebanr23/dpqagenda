@@ -187,6 +187,11 @@ ul {
     width: 100%;
     background-color: #ffffff;
 }
+.barra nav ul li #icono-user {
+    width: 20px;
+    height: 15px;
+    transform: translateY(1px);
+}
 .principal {
     padding-top: 2rem;
     padding-bottom: 4rem;

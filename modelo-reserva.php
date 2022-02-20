@@ -78,11 +78,12 @@ if($_POST['reg-reserva'] == 'nuevo') {
         $stmt->execute();
         $id_insertado = $stmt->insert_id;
         
-        if($stmt->affected_rows) {
+        if($stmt->affected_rows > 0) {
             $respuesta = array(
                 'respuesta' => 'exito',
                 'id_insertado' => $id_insertado
             );
+            die(json_encode($respuesta));
         } else {
             $respuesta = array(
                 'respuesta' => 'error'
@@ -90,9 +91,6 @@ if($_POST['reg-reserva'] == 'nuevo') {
         }
         $stmt->close();
         $conn->close();
-
-        //header('Location: index.php');
-        
     } catch (\Exception $e) {
         $respuesta = array(
             'respuesta' => $e->getMessage()

@@ -15,6 +15,7 @@
                     $sql .= " ON reserva.categoria = categoria.id_categoria ";
                     $sql .= " AND categoria.id_categoria = 3 ";
                     $sql .= " AND reserva.estado_reserva = 1 ";
+                    $sql .= " ORDER BY fecha_ini ";
                     $resultado = $conn->query($sql);
                 } catch(\Exception $e) {
                     echo $e->getMessage();

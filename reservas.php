@@ -20,6 +20,7 @@ $id_vehiculo = $_GET['id'];
                     $sql .= " ON reserva.categoria = categoria.id_categoria ";
                     $sql .= " AND id_vehiculo = $id_vehiculo ";
                     $sql .= " AND estado_reserva = 1 ";
+                    $sql .= " ORDER BY fecha_ini ";
                     $resultado = $conn->query($sql);
                 } catch(\Exception $e) {
                     echo $e->getMessage();

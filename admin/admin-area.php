@@ -12,8 +12,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page
-        <small>it all starts here</small>
+        Panel de Administracion
+        <small>Pagina principal</small>
       </h1>
     </section>
 
@@ -22,17 +22,13 @@
 
       <!-- Default box -->
       <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
+      <div class="box-header with-border">
+          <h3 class="box-title">Informatica</h3>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+          Comenza a editar los parametros desde aqui.
         </div>
         <!-- /.box-body -->
-        <div class="box-footer">
-          Footer
-        </div>
-        <!-- /.box-footer-->
       </div>
       <!-- /.box -->
 

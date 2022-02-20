@@ -79,7 +79,6 @@
                 <input type="hidden" name="reg-reserva" value="actualizar">
 
                 <div class="btn-agendar centrar-texto">
-                   <!--<input type="button" id="eliminar-reserva" value="Eliminar" class="btn-eliminar"> Eliminar Reserva -->
                    <input type="button" id="cerrar-reserva" value="Cerrar" class="btn-cerrar"> <!-- Cerrar Reserva -->
                     <input type="submit" value="Guardar">
                 </div>

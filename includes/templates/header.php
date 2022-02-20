@@ -32,7 +32,7 @@
                     <li><a href="prestamos.php">Prestamos</a></li>
                     <li>
                         <ul class="sub-menu">
-                            <li id="usuario-menu"><a href="#"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre']; ?></a></li>
+                            <li id="usuario-menu"><a href="#"><img src="img/user-solid.svg" id="icono-user"> <?php echo $_SESSION['nombre']; ?></a></li>
                             <div id="opciones-menu">
                                 <li><a href="admin/admin-area.php">Panel de Administracion</a></li>
                                 <li><a href="login.php?cerrar_sesion=true">Cerrar Sesion</a></li>
