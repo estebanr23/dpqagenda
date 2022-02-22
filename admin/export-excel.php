@@ -1,91 +1,84 @@
 <?php
-    header("Content-Type:application/xls");
-    header("Content-Disposition: attachment; filename=reservas ". date('Y:m:d:m:s').".xls");
-    header("Pragma: no-cache");
-    header("Expires: 0");
- 
-    $fecha_desde = date("Y-m-d H:i:s", strtotime($_POST['fecha_desde']));
-    $fecha_hasta = date("Y-m-d H:i:s", strtotime($_POST['fecha_hasta']));
+  // Declaramos la libreria
+  require_once "../vendor/autoload.php";
+  use PhpOffice\PhpSpreadsheet\Spreadsheet;
+  use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-    include_once '../includes/funciones/db_conexion.php';
-/*
+  include_once '../includes/funciones/db_conexion.php';
+
+  $fecha_desde = $_POST['fecha_desde'];
+  $fecha_hasta = $_POST['fecha_hasta'];
+
+  if(isset($_POST['registro']) == 'export') {
+
+    $documento = new Spreadsheet();
+    $documento
+    ->getProperties()
+    ->setCreator("Esteban Robert")
+    ->setLastModifiedBy('')
+    ->setTitle('DPQ Agenda')
+    ->setDescription('Reservas Finalizadas');
+
+    $hojaReserva = $documento->getActiveSheet();
+    $hojaReserva->setTitle("Reservas");
+
+    # Encabezado de los productos
+    $encabezado = ["Cliente", "Modelo", "Categoria", "Fecha de Inicio", "Fecha de Fin", "Total"];
+
+    # El último argumento es por defecto A1
+    $hojaReserva->fromArray($encabezado, null, 'A1');
+
+    # Consulta
     try {
-        $sql = " SELECT reserva.*, nombre, identificacion, modelo, nombre_cat FROM reserva";
-        $sql .= " INNER JOIN cliente ";
-        $sql .= " ON reserva.cliente = cliente.id_cliente ";
-        $sql .= " INNER JOIN vehiculo ";
-        $sql .= " ON reserva.vehiculo = vehiculo.id_vehiculo ";
-        $sql .= " INNER JOIN categoria ";
-        $sql .= " ON reserva.categoria = categoria.id_categoria ";
-        $sql .= " AND reserva.estado_reserva = 2 ";
-        $sql .= " AND $fecha_desde <= reserva.editado <= $fecha_hasta";
-        $resultado = $conn->query($sql);
-      } catch(Exception $e) {
-        $error = $e->getMessage();
-        echo $error;
-      }
-
-      while($reserva = $resultado->fetch_assoc()) {
-        $editado = $reserva['editado'];
-        $fecha_cierre = date("Y-m-d", strtotime($editado));
-      }
-
-      die(json_encode($fecha_cierre));
-*/
-    $output = "";
-
-    if(isset($_POST['registro']) == 'export') {
-        $output .= "
-            <table>
-                <thead>
-                    <tr>
-                        <th>Cliente</th>
-                        <th>Vehiculo</th>
-                        <th>Categoria</th>
-                        <th>Fecha de Inicio</th>
-                        <th>Fecha de Fin</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-        ";
-
-        try {
-            $sql = " SELECT reserva.*, nombre, identificacion, modelo, nombre_cat FROM reserva";
-            $sql .= " INNER JOIN cliente ";
-            $sql .= " ON reserva.cliente = cliente.id_cliente ";
-            $sql .= " INNER JOIN vehiculo ";
-            $sql .= " ON reserva.vehiculo = vehiculo.id_vehiculo ";
-            $sql .= " INNER JOIN categoria ";
-            $sql .= " ON reserva.categoria = categoria.id_categoria ";
-            $sql .= " AND reserva.estado_reserva = 2 ";
-            $sql .= " AND $fecha_desde < reserva.editado AND reserva.editado < $fecha_hasta"; // Revisar
-            $resultado = $conn->query($sql);
-          } catch(Exception $e) {
-            $error = $e->getMessage();
-            echo $error;
-          }
-
-          while($reserva = $resultado->fetch_assoc()) {
-                $output .= "
-                <tr>
-                    <td>".$reserva['nombre']."</td>
-                    <td>".$reserva['modelo']."</td>
-                    <td>".$reserva['nombre_cat']."</td>
-                    <td>".$reserva['fecha_ini']."</td>
-                    <td>".$reserva['fecha_fin']."</td>
-                    <td>".$reserva['total']."</td>
-                </tr>    
-                ";
-
-              }
-
-          $output .= "
-                </tbody>
-            </table>
-          ";
-
-          echo $output;
-
+      $sql = " SELECT reserva.*, nombre, identificacion, modelo, nombre_cat FROM reserva";
+      $sql .= " INNER JOIN cliente ";
+      $sql .= " ON reserva.cliente = cliente.id_cliente ";
+      $sql .= " INNER JOIN vehiculo ";
+      $sql .= " ON reserva.vehiculo = vehiculo.id_vehiculo ";
+      $sql .= " INNER JOIN categoria ";
+      $sql .= " ON reserva.categoria = categoria.id_categoria ";
+      $sql .= " AND reserva.estado_reserva = 2 ";
+      $resultado = $conn->query($sql);
+    } catch(Exception $e) {
+      $error = $e->getMessage();
+      echo $error;
     }
+
+    # Comenzamos en la fila 2
+    $numeroDeFila = 2;
+
+    while ($reserva = $resultado->fetch_object()) {
+      # Obtener registros de MySQL
+      $cliente = $reserva->cliente;
+      $modelo = $reserva->modelo;
+      $categoria = $reserva->nombre_cat;
+      $fecha_ini = $reserva->fecha_ini;
+      $fecha_fin = $reserva->fecha_fin;
+      $total = $reserva->total;
+      $editado = $reserva->editado;
+      $fecha_cierre = date("Y-m-d", strtotime($editado));
+
+      if($fecha_desde <= $fecha_cierre and $fecha_cierre <= $fecha_hasta) {
+        # Escribir registros en el documento
+        $hojaReserva->setCellValueByColumnAndRow(1, $numeroDeFila, $cliente);
+        $hojaReserva->setCellValueByColumnAndRow(2, $numeroDeFila, $modelo);
+        $hojaReserva->setCellValueByColumnAndRow(3, $numeroDeFila, $categoria);
+        $hojaReserva->setCellValueByColumnAndRow(4, $numeroDeFila, $fecha_ini);
+        $hojaReserva->setCellValueByColumnAndRow(5, $numeroDeFila, $fecha_fin);
+        $hojaReserva->setCellValueByColumnAndRow(6, $numeroDeFila, $total);
+        $numeroDeFila++;
+      }
+    }
+
+    $fileName="Reservas.xlsx";
+
+    # Crear un "escritor"
+    $writer = new Xlsx($documento);
+
+    # Le pasamos la ruta de guardado
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment; filename="'.urlencode($fileName).'"');
+    $writer->save('php://output');
+
+  }
 ?>
