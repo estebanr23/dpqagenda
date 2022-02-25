@@ -36,16 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while($testdrive = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
-                            <tr>
-                                <td><a href="editar.php?id=<?php echo $testdrive['id_reserva']; ?>"><?php echo $testdrive['nombre']; ?></a></td>
-                                <td><?php echo $testdrive['modelo']; ?></td>
-                                <td><?php echo $testdrive['fecha_ini']; ?></td>
-                                <td><?php echo $testdrive['fecha_fin']; ?></td>
-                                <td><?php echo $testdrive['hora_ini']; ?></td>
-                                <td><?php echo $testdrive['hora_fin']; ?></td>
-                            </tr>
-                        <?php } ?>
+                        <?php include_once 'includes/templates/fechas.php'; ?>
                     </tbody>
                 </table>
             </div>

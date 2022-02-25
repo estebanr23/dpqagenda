@@ -34,33 +34,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($reserva = $resultado->fetch_assoc()) { ?>
-                            <tr>
-                                <td><a href="editar.php?id=<?php echo $reserva['id_reserva']; ?>"><?php echo $reserva['nombre']; ?></a></td>
-                                <td><?php echo $reserva['modelo']; ?></td>
-                                <td><?php echo $reserva['fecha_ini']; ?></td>
-                                <td><?php echo $reserva['fecha_fin']; ?></td>
-                                <td><?php echo $reserva['hora_ini']; ?></td>
-                                <td><?php echo $reserva['hora_fin']; ?></td>
-                            </tr>
-                        <?php } ?>
-
-                        <!--
-                        <tr>
-                            <td>Fernando Rojas</td>
-                            <td>Yaris</td>
-                            <td>10/11/2021</td>
-                            <td>16/12/2021</td>
-                            <td>Kinto</td>
-                        </tr>
-                        <tr>
-                            <td>Federico Aviles</td>
-                            <td>Corolla</td>
-                            <td>2/10/2021</td>
-                            <td>13/10/2021</td>
-                            <td>Toyota del Parque</td>
-                        </tr>
-                        -->
+                        <?php include_once 'includes/templates/fechas.php'; ?>
                     </tbody>
                 </table>
             </div>

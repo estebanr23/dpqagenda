@@ -63,11 +63,11 @@
                 </div>
                 <div class="campo">
                     <label for="horaini">Hora Inicio</label>
-                    <input type="time" placeholder="Fecha de inicio" name="hora_ini">
+                    <input type="time" placeholder="Fecha de inicio" name="hora_ini" value="09:00">
                 </div>
                 <div class="campo">
                     <label for="horafin">Hora Fin</label>
-                    <input type="time" placeholder="Fecha de fin" name="hora_fin">
+                    <input type="time" placeholder="Fecha de fin" name="hora_fin" value="20:00">
                 </div>
                 <div class="campo">
                     <label for="descripcion">Descripcion</label>

@@ -41,16 +41,7 @@ $id_vehiculo = $_GET['id'];
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while($alquiler = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
-                            <tr>
-                                <td><a href="editar.php?id=<?php echo $alquiler['id_reserva']; ?>"><?php echo $alquiler['nombre']; ?></a></td>
-                                <td><?php echo $alquiler['modelo']; ?></td>
-                                <td><?php echo $alquiler['fecha_ini']; ?></td>
-                                <td><?php echo $alquiler['fecha_fin']; ?></td>
-                                <td><?php echo $alquiler['hora_ini']; ?></td>
-                                <td><?php echo $alquiler['hora_fin']; ?></td>
-                            </tr>
-                        <?php } ?>
+                        <?php include_once 'includes/templates/fechas.php'; ?>
                     </tbody>
                 </table>
             </div>

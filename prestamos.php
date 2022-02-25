@@ -36,16 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while($prestamo = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
-                            <tr>
-                                <td><a href="editar.php?id=<?php echo $prestamo['id_reserva']; ?>"><?php echo $prestamo['nombre']; ?></a></td>
-                                <td><?php echo $prestamo['modelo']; ?></td>
-                                <td><?php echo $prestamo['fecha_ini']; ?></td>
-                                <td><?php echo $prestamo['fecha_fin']; ?></td>
-                                <td><?php echo $prestamo['hora_ini']; ?></td>
-                                <td><?php echo $prestamo['hora_fin']; ?></td>
-                            </tr>
-                        <?php } ?>
+                        <?php include_once 'includes/templates/fechas.php'; ?>
                     </tbody>
                 </table>
             </div>

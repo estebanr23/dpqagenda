@@ -35,7 +35,9 @@
                         <ul class="sub-menu">
                             <li id="usuario-menu"><a href="#"><img src="img/user-solid.svg" id="icono-user"> <?php echo $_SESSION['nombre']; ?></a></li>
                             <div id="opciones-menu">
-                                <li><a href="admin/admin-area.php">Panel de Administracion</a></li>
+                                <?php if($_SESSION['nivel'] == 1) {?>
+                                    <li><a href="admin/admin-area.php">Panel de Administracion</a></li>
+                                <?php } ?>
                                 <li><a href="login.php?cerrar_sesion=true">Cerrar Sesion</a></li>
                             </div>
                         </ul>
