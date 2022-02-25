@@ -306,7 +306,8 @@ ul {
     border: 1px solid #ffffff;
     padding: 5px 20px;
     font-size: 1.8rem;
-    margin-right: 1rem;text-decoration: none;
+    margin-right: 1rem;
+    text-decoration: none;
 }
 .after-btn .enlaces a:hover {
     background-color: #ffffff;
@@ -315,10 +316,6 @@ ul {
 .after-btn .enlaces a:last-of-type {
     margin-right: 0;
 }
-
-
-
-
 .lista-vehiculos .vehiculo img {
     width: 100%;
     height: 270px;
@@ -457,4 +454,15 @@ ul {
 }
 .formulario-agenda .btn-agendar .btn-cerrar:hover {
     background-color: #5ce257;
+}
+.formulario-agenda #mensaje-reserva {
+    display: none;
+    margin: 0 auto;
+    width: 400px;
+}
+.formulario-agenda .msn {
+    color: #30b92b;
+    font-weight: 600;
+    text-align: end;
+    margin-bottom: 2rem;
 }

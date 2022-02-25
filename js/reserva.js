@@ -6,6 +6,7 @@
         // Cambiar estado de reserva
         var btnCerrar = document.getElementById("cerrar-reserva");
         var campoEstado = document.getElementById("estado_reserva");
+        var divMensaje = document.getElementById("mensaje-reserva");
 
         if(btnCerrar) {
             btnCerrar.addEventListener('click', function() {
@@ -27,7 +28,7 @@
                                             'La reserva fue cerrada correctamente',
                                             'success'
                                         )
-                                        btnCerrar.disabled = true;
+                                        divMensaje.style.display="block";
                                     } else {
                                         swal(
                                             'Error!',

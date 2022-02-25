@@ -28,13 +28,13 @@
         <h1 class="centrar-texto h1-margin">Editar Reserva</h1>
         <div class="formulario-agenda">
             <form action="modelo-reserva.php" id="form-agenda" method="POST">
-                <div class="campo cliente">
+                <div class="campo">
                     <label for="cliente">Cliente</label>
-                    <p><?php echo $reserva['nombre']; ?></p>
+                    <input type="text" value="<?php echo $reserva['nombre']; ?>" disabled>
                 </div>
-                <div class="campo cliente">
+                <div class="campo">
                     <label for="dni">DNI / CUIT</label>
-                    <p><?php echo $reserva['identificacion']; ?></p>
+                    <input type="text" value="<?php echo $reserva['identificacion']; ?>" disabled>
                 </div>
                 <input type="hidden" name="cliente" value="<?php echo $reserva['id_cliente']; ?>">
                 <div class="campo">
@@ -77,6 +77,10 @@
                 <input type="hidden" id="estado_reserva" name="estado_reserva" value="1"> <!-- Debe tomer el valor 2 al cerrar la reserva -->
                 <input type="hidden" name="id_reserva" value="<?php echo $reserva['id_reserva']; ?>">
                 <input type="hidden" name="reg-reserva" value="actualizar">
+
+                <div id="mensaje-reserva">
+                    <p class="msn"><i class="fa fa-check"></i> Reserva Cerrada</p>
+                </div>
 
                 <div class="btn-agendar centrar-texto">
                    <input type="button" id="cerrar-reserva" value="Cerrar" class="btn-cerrar"> <!-- Cerrar Reserva -->
