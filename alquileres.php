@@ -36,14 +36,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while($alquiler = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
+                        <?php 
+                            // setlocale(LC_TIME, 'es_ES.UTF-8'); Linux
+                            setlocale(LC_TIME, 'spanish');
+                            while($alquiler = $resultado->fetch_array(MYSQLI_ASSOC)) { 
+
+                                $fecha_ini = strftime( "%B %d, %Y ", strtotime($alquiler['fecha_ini']));
+                                $fecha_ini_mostrar = ucfirst($fecha_ini);
+
+                                $fecha_fin = strftime( "%B %d, %Y ", strtotime($alquiler['fecha_fin']));
+                                $fecha_fin_mostrar = ucfirst($fecha_fin);
+
+                                $hora_ini = date("h:i A" , strtotime($alquiler['hora_ini']));
+                                $hora_fin = date("h:i A" , strtotime($alquiler['hora_fin']));
+
+                        ?>
                             <tr>
                                 <td><a href="editar.php?id=<?php echo $alquiler['id_reserva']; ?>"><?php echo $alquiler['nombre']; ?></a></td>
                                 <td><?php echo $alquiler['modelo']; ?></td>
-                                <td><?php echo $alquiler['fecha_ini']; ?></td>
-                                <td><?php echo $alquiler['fecha_fin']; ?></td>
-                                <td><?php echo $alquiler['hora_ini']; ?></td>
-                                <td><?php echo $alquiler['hora_fin']; ?></td>
+                                <td><?php echo $fecha_ini_mostrar; ?></td>
+                                <td><?php echo $fecha_fin_mostrar; ?></td>
+                                <td><?php echo $hora_ini; ?></td>
+                                <td><?php echo $hora_fin; ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
