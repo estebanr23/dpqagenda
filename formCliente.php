@@ -1,6 +1,6 @@
 <?php include_once 'includes/templates/header.php'; 
-    $id = $_GET['id'];
-    if(!filter_var($id, FILTER_VALIDATE_INT)) {
+    $_SESSION['vehiculo'] = $_GET['id'];
+    if(!filter_var($_SESSION['vehiculo'], FILTER_VALIDATE_INT)) {
         die("Se ha producido un Error.");
     }
 ?>

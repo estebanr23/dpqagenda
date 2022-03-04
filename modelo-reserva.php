@@ -21,7 +21,7 @@ if($_POST['reg-cliente'] == 'nuevo') {
             $stmt->bind_param("ss", $nombre, $identificacion);
             $stmt->execute();
             $id_insertado = $stmt->insert_id;
-            if($stmt->affected_rows) {
+            if($stmt->affected_rows > 0) {
                 $respuesta = array(
                     'respuesta' => 'exito',
                     'id_insertado' => $id_insertado
@@ -37,23 +37,25 @@ if($_POST['reg-cliente'] == 'nuevo') {
             // Envia los datos del nuevo cliente al siguiente formulario.
             //$_SESSION['cliente'] = $nombre;
             $_SESSION['identificacion'] = $identificacion;
-            header('Location: formAgenda.php');
+            //header('Location: formAgenda.php');
+            die(json_encode($respuesta));
     
         } catch (\Exception $e) {
             $respuesta = array(
                 'respuesta' => $e->getMessage()
             );
         }
-        
-        die(json_encode($respuesta));
     
     } else { // Si el cliente existe, solo envia los datos al siguiente formulario.
+        // En caso de existir el cliente la respuesta cambia.
+        $respuesta = array(
+            'respuesta' => 'existente'
+        );
     
-        //$_SESSION['cliente'] = $cliente['nombre'];
         $_SESSION['identificacion'] = $cliente['identificacion'];
+        die(json_encode($respuesta));
         //header('Location: formAgenda.php?nombre='.$cliente_nombre);
-    
-        header('Location: formAgenda.php');
+        //header('Location: formAgenda.php');
     }
 }
 

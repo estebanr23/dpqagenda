@@ -1,7 +1,7 @@
 <?php include_once 'includes/templates/header.php'; 
 
-    //$nombre = $_SESSION['cliente'];
     $iden = $_SESSION['identificacion'];
+    $vehiculo_select = $_SESSION['vehiculo'];
 ?>
 
     <div class="contenedor principal">
@@ -36,7 +36,11 @@
                     <label for="vehiculo">Vehiculo</label>
                     <select name="vehiculo" id="vehiculo">
                         <?php while ($vehiculos = $resultado->fetch_assoc()) { ?>
-                            <option value="<?php echo $vehiculos['id_vehiculo']; ?>"><?php echo $vehiculos['modelo']; ?></option>
+                            <?php if ($vehiculos['id_vehiculo'] == $vehiculo_select) { ?>
+                                <option value="<?php echo $vehiculos['id_vehiculo']; ?>" selected><?php echo $vehiculos['modelo']; ?></option>
+                            <?php } else { ?>
+                                <option value="<?php echo $vehiculos['id_vehiculo']; ?>"><?php echo $vehiculos['modelo']; ?></option>
+                            <?php } ?>
                         <?php } ?>
                     </select>
                 </div>
