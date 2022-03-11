@@ -1,4 +1,10 @@
-<?php session_destroy(); ?>
+<?php 
+    session_start();
+
+    if (isset($_GET['cerrar_sesion'])) {
+        session_destroy();
+    } 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

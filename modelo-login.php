@@ -39,12 +39,6 @@
             echo "Error: " . $e->getMessage();
         }
     
-        die(json_encode($respuesta));
-    
+        die(json_encode($respuesta));  
     } 
-
-    // Cerrar Sesion
-    if (isset($_GET['cerrar_sesion'])) {
-        header('Location: login.php');
-    }
 ?>

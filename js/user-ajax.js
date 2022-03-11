@@ -26,8 +26,8 @@ $(document).ready(function() {
                     )
                 }
             }
-        })
-    })
+        });
+    });
 
     // Formulario cliente        
     $('#form-cliente').on('submit', function(e) {
@@ -72,6 +72,5 @@ $(document).ready(function() {
                 }
             }
         })
-    })
-
+    });
 });
