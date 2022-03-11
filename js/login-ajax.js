@@ -13,10 +13,7 @@ $(document).ready(function() {
             success: function(data) { 
                 var resultado = data;
                 if(resultado.respuesta == 'exitoso') {
-                    // setTimeout ejecuta una funcion luego de un cierto tiempo. 2000 = 2seg
-                    setTimeout(function() {
                         window.location.href = 'index.php';
-                    }, 1000);
                 } else {
                     $('.div-mensaje').css('display', 'block');
                 }

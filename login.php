@@ -1,3 +1,4 @@
+<?php session_destroy(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
 </head>
 <body>
     <div class="fondo-login">
-        <div class="logo-contenedor">
+        <div class="site-header contenedor">
             <div>
                 <h1 class="logo">TOYOTA <span>Del Parque</span></h1>
             </div>
@@ -31,7 +32,7 @@
                     <input type="password" name="password" placeholder="Contraseña">
                 </div>
                 <div class="div-mensaje">
-                    <p id="mensaje-error">El usuario o contraseña son incorrectas.</p>
+                    <p id="mensaje-error">Usuario o contraseña incorrectas.</p>
                 </div>
                 <input type="hidden" name="login-admin" value="1">
                 <input type="submit" class="btn-login" value="Ingresar">

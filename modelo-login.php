@@ -13,7 +13,6 @@
                 $existe = $stmt->fetch();
                 if($existe) {
                     if(password_verify($password, $password_admin)) {
-                    //if($password == $password_admin) {
                         session_start(); // Creo una session con esta funcion luego de verificar la contraseña.
                         $_SESSION['usuario'] = $usuario_admin; // Creo variables en la session y le asigno valores.
                         $_SESSION['nombre'] = $nombre_admin;
@@ -23,7 +22,6 @@
                             'respuesta' => 'exitoso',
                             'usuario' => $nombre_admin
                         );
-                        // header('Location: index.php');
                     } else {
                         $respuesta = array(
                             'respuesta' => 'error'
@@ -47,10 +45,6 @@
 
     // Cerrar Sesion
     if (isset($_GET['cerrar_sesion'])) {
-        $cerrar_sesion = $_GET['cerrar_sesion'];
-        if($cerrar_sesion) {
-            session_destroy();
-            header('Location: login.php');
-        }
+        header('Location: login.php');
     }
 ?>

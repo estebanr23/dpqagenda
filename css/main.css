@@ -43,18 +43,13 @@ ul {
 .fondo-login {
     position: relative;
     height: 100vh;
-    /*
-    background-image: url('/img/fondo.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    */
     background: rgb(52,162,189);
     background: linear-gradient(90deg, rgba(52,162,189,1) 0%, rgba(13,9,75,1) 0%, rgba(217,29,29,1) 100%);
 }
+/*
 .logo-contenedor {
     width: 1200px;
-    height: 90px;
+    height: 80px;
     position: absolute;
     top: 0;
     left: 50%;
@@ -63,30 +58,32 @@ ul {
     justify-content: space-between;
     align-items: center;
 }
+*/
 .logo {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 6.5rem;
+    font-size: 5.5rem;
     color: #e62d2d;
 }
 .logo span {
     font-family: 'Orbitron', sans-serif;
     font-weight: 500;
-    font-size: 5rem;
+    font-size: 4rem;
     color: #979797;
 }
-/*
-.logo-contenedor .emblema {
-    margin-top: 2rem;
-}
-*/
 .site-header .emblema {
     padding-top: 1rem;
 }
+/*
 .logo-contenedor img,
 .site-header img {
-    width: 110px;
-    height: 90px;
+    width: 90px;
+    height: 70px;
+}
+*/
+.site-header img {
+    width: 90px;
+    height: 70px;
 }
 .formulario-login {
     background-color: #ffffff;
@@ -104,8 +101,8 @@ ul {
     color: #000000;
 }
 .formulario-login .campo input {
-    width: 240px;
-    height: 40px;
+    width: 220px;
+    height: 30px;
     border-radius: 4px;
     border: 0.1px solid #807f7f;
     margin-bottom: 2rem;
@@ -135,16 +132,6 @@ ul {
 
 /* Index */
 .fondo-color {
-    /*
-    background: rgba(28,28,28,1);
-    background: -moz-linear-gradient(left, rgba(28,28,28,1) 0%, rgba(71,71,71,1) 0%, rgba(0,0,0,1) 0%, rgba(76,76,76,1) 0%, rgba(102,102,102,1) 0%, rgba(89,89,89,1) 0%, rgba(44,44,44,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(28,28,28,1)), color-stop(0%, rgba(71,71,71,1)), color-stop(0%, rgba(0,0,0,1)), color-stop(0%, rgba(76,76,76,1)), color-stop(0%, rgba(102,102,102,1)), color-stop(0%, rgba(89,89,89,1)), color-stop(100%, rgba(44,44,44,1)));
-    background: -webkit-linear-gradient(left, rgba(28,28,28,1) 0%, rgba(71,71,71,1) 0%, rgba(0,0,0,1) 0%, rgba(76,76,76,1) 0%, rgba(102,102,102,1) 0%, rgba(89,89,89,1) 0%, rgba(44,44,44,1) 100%);
-    background: -o-linear-gradient(left, rgba(28,28,28,1) 0%, rgba(71,71,71,1) 0%, rgba(0,0,0,1) 0%, rgba(76,76,76,1) 0%, rgba(102,102,102,1) 0%, rgba(89,89,89,1) 0%, rgba(44,44,44,1) 100%);
-    background: -ms-linear-gradient(left, rgba(28,28,28,1) 0%, rgba(71,71,71,1) 0%, rgba(0,0,0,1) 0%, rgba(76,76,76,1) 0%, rgba(102,102,102,1) 0%, rgba(89,89,89,1) 0%, rgba(44,44,44,1) 100%);
-    background: linear-gradient(to right, rgba(28,28,28,1) 0%, rgba(71,71,71,1) 0%, rgba(0,0,0,1) 0%, rgba(76,76,76,1) 0%, rgba(102,102,102,1) 0%, rgba(89,89,89,1) 0%, rgba(44,44,44,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1c1c', endColorstr='#2c2c2c', GradientType=1 );
-    */
     background: rgb(52,162,189);
     background: linear-gradient(90deg, rgba(52,162,189,1) 0%, rgba(13,9,75,1) 0%, rgba(217,29,29,1) 100%);
 }
@@ -171,7 +158,7 @@ ul {
     color: #000000;
     display: inline-block;
     width: 100%;
-    padding: .8rem 0;
+    padding: .6rem 0;
 }
 .barra nav ul li a:hover {
     background-color: rgb(62, 53, 187);
@@ -205,7 +192,7 @@ ul {
     width: 800px;
     border-radius: 30px;
     border: 1px solid #ffffff;
-    height: 45px;
+    height: 37px;
     padding: 0 2rem;
     margin-right: 2rem;
 }
@@ -218,7 +205,7 @@ ul {
     background-color: rgba(13,9,75,1);
     border-radius: 30px;
     border: 1px solid rgba(13,9,75,1);
-    height: 45px;
+    height: 37px;
     padding: 0 2rem;
 }
 .buscador .btn-buscar:hover {
@@ -232,33 +219,8 @@ ul {
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 6rem;
     grid-row-gap: 6rem;
+    padding: 0 4rem;
 }
-
-
-/*
-.lista-vehiculos .vehiculo a{
-    text-decoration: none;
-    display: inline-block;
-    transition: all .3s ease;
-    position: relative;
-}
-
-.lista-vehiculos .vehiculo a:hover{
-    transform: scale(1.1);
-    border-radius: 20px;
-    box-shadow: 0px 0px 50px #666;
-}
-.lista-vehiculos .vehiculo a:hover::after {
-    content: "";
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.486);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-}
-*/
 .lista-vehiculos .vehiculo {
     transition: all .3s ease;
     position: relative;
@@ -279,12 +241,6 @@ ul {
     height: 100%;
     border-radius: 20px;
 }
-
-/*
-.vehiculo {
-    position: relative;
-}
-*/
 .after-btn {
     display: none;
     position: absolute;
@@ -318,7 +274,7 @@ ul {
 }
 .lista-vehiculos .vehiculo img {
     width: 100%;
-    height: 270px;
+    height: 250px;
     display: block;
     border-radius: 20px 20px 0 0;
 }
@@ -355,7 +311,7 @@ ul {
 }
 .site-footer {
     border-top: 1px solid #ffffff;
-    padding: 1.5rem 0;
+    padding: 1.2rem 0;
 }
 .site-footer .contenido-footer {
     display: flex;

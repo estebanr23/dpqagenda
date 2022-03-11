@@ -34,10 +34,7 @@ if($_POST['reg-cliente'] == 'nuevo') {
             $stmt->close();
             $conn->close();
         
-            // Envia los datos del nuevo cliente al siguiente formulario.
-            //$_SESSION['cliente'] = $nombre;
             $_SESSION['identificacion'] = $identificacion;
-            //header('Location: formAgenda.php');
             die(json_encode($respuesta));
     
         } catch (\Exception $e) {
@@ -55,11 +52,8 @@ if($_POST['reg-cliente'] == 'nuevo') {
         $_SESSION['identificacion'] = $cliente['identificacion'];
         die(json_encode($respuesta));
         //header('Location: formAgenda.php?nombre='.$cliente_nombre);
-        //header('Location: formAgenda.php');
     }
 }
-
-
 
 // Crear Reserva
 if($_POST['reg-reserva'] == 'nuevo') {
@@ -85,7 +79,6 @@ if($_POST['reg-reserva'] == 'nuevo') {
                 'respuesta' => 'exito',
                 'id_insertado' => $id_insertado
             );
-            die(json_encode($respuesta));
         } else {
             $respuesta = array(
                 'respuesta' => 'error'
