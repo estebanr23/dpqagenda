@@ -27,7 +27,7 @@ $id_vehiculo = $_GET['id'];
                 }
             ?>
 
-            <h1 class="centrar-texto h1-margin">Alquileres</h1>
+            <h1 class="centrar-texto h1-margin">Reservas</h1>
             <div class="contenedor-tabla">
                 <table class="tabla">
                     <thead>

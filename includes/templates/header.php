@@ -38,7 +38,7 @@
                                 <?php if($_SESSION['nivel'] == 1) {?>
                                     <li><a href="admin/admin-area.php">Panel de Administracion</a></li>
                                 <?php } ?>
-                                <li><a href="login.php?cerrar_sesion=true">Cerrar Sesion</a></li>
+                                <li><a href="modelo-login.php?cerrar_sesion=true">Cerrar Sesion</a></li>
                             </div>
                         </ul>
                     </li>

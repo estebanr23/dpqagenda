@@ -9,7 +9,7 @@ if($conn->ping()) {
 }
 */
 include_once '../includes/funciones/db_conexion.php';
-//include_once '/funciones/funciones.php';
+
 $usuario = $_POST['usuario'];
 $nombre = $_POST['nombre'];
 $nivel = $_POST['nivel'];

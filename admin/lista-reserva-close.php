@@ -7,7 +7,6 @@
 
       include_once 'templates/navegacion.php'; 
 
-      //include_once 'funciones/funciones.php';
       include_once '../includes/funciones/db_conexion.php';
 ?>
 

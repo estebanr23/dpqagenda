@@ -35,7 +35,7 @@
                   <a href="editar-admin.php?id=<?php echo $_SESSION['id']; ?>" class="btn btn-success btn-flat">Ajustes</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../login.php?cerrar_sesion=true" class="btn btn-success btn-flat">Cerrar Session</a>
+                  <a href="../modelo-login.php?cerrar_sesion=true" class="btn btn-success btn-flat">Cerrar Session</a>
                 </div>
               </li>
             </ul>
