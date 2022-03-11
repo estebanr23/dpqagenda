@@ -23,7 +23,7 @@
     $hojaReserva->setTitle("Reservas");
 
     # Encabezado de los productos
-    $encabezado = ["Cliente", "Modelo", "Categoria", "Fecha de Inicio", "Fecha de Fin", "Total"];
+    $encabezado = ["Cliente", "DNI/CUIT","Modelo", "Categoria", "Fecha de Inicio", "Fecha de Fin", "Total"];
 
     # El último argumento es por defecto A1
     $hojaReserva->fromArray($encabezado, null, 'A1');
@@ -49,7 +49,8 @@
 
     while ($reserva = $resultado->fetch_object()) {
       # Obtener registros de MySQL
-      $cliente = $reserva->cliente;
+      $cliente = $reserva->nombre;
+      $identificacion = $reserva->identificacion;
       $modelo = $reserva->modelo;
       $categoria = $reserva->nombre_cat;
       $fecha_ini = $reserva->fecha_ini;
@@ -61,11 +62,12 @@
       if($fecha_desde <= $fecha_cierre and $fecha_cierre <= $fecha_hasta) {
         # Escribir registros en el documento
         $hojaReserva->setCellValueByColumnAndRow(1, $numeroDeFila, $cliente);
-        $hojaReserva->setCellValueByColumnAndRow(2, $numeroDeFila, $modelo);
-        $hojaReserva->setCellValueByColumnAndRow(3, $numeroDeFila, $categoria);
-        $hojaReserva->setCellValueByColumnAndRow(4, $numeroDeFila, $fecha_ini);
-        $hojaReserva->setCellValueByColumnAndRow(5, $numeroDeFila, $fecha_fin);
-        $hojaReserva->setCellValueByColumnAndRow(6, $numeroDeFila, $total);
+        $hojaReserva->setCellValueByColumnAndRow(2, $numeroDeFila, $identificacion);
+        $hojaReserva->setCellValueByColumnAndRow(3, $numeroDeFila, $modelo);
+        $hojaReserva->setCellValueByColumnAndRow(4, $numeroDeFila, $categoria);
+        $hojaReserva->setCellValueByColumnAndRow(5, $numeroDeFila, $fecha_ini);
+        $hojaReserva->setCellValueByColumnAndRow(6, $numeroDeFila, $fecha_fin);
+        $hojaReserva->setCellValueByColumnAndRow(7, $numeroDeFila, $total);
         $numeroDeFila++;
       }
     }
