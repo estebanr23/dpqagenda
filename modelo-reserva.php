@@ -82,7 +82,7 @@ if($_POST['reg-reserva'] == 'nuevo') {
         } else {
             $respuesta = array(
                 'respuesta' => 'error'
-            );    
+            );   
         }
         $stmt->close();
         $conn->close();
@@ -115,7 +115,7 @@ if($_POST['reg-reserva'] == 'actualizar') {
         $stmt->bind_param('iiisssssdii', $cliente, $vehiculo, $categoria, $fecha_ini, $fecha_fin, $hora_ini, $hora_fin, $descripcion, $total, $estado_reserva, $id_reserva);
         $stmt->execute();
 
-        if($stmt->affected_rows) {
+        if($stmt->affected_rows > 0) {
             $respuesta = array(
                 'respuesta' => 'exito',
                 'id_actualizado' => $stmt->insert_id // No muestra el id de reserva actualizada
