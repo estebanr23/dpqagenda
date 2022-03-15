@@ -1,6 +1,6 @@
 <?php 
-    // setlocale(LC_TIME, 'es_ES.UTF-8'); Linux
-    setlocale(LC_TIME, 'spanish');
+    setlocale(LC_TIME, 'es_ES.UTF-8'); // Linux
+    // setlocale(LC_TIME, 'spanish');
     while($reserva = $resultado->fetch_array(MYSQLI_ASSOC)) { 
 
         $fecha_ini = strftime( "%B %d, %Y ", strtotime($reserva['fecha_ini']));

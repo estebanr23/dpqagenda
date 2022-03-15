@@ -182,7 +182,7 @@ ul {
 .principal {
     padding-top: 2rem;
     padding-bottom: 4rem;
-    min-height: calc(100vh - 188px); /* Tamaño min del main. Deja el footer abajo. */
+    min-height: calc(100vh - 159.47px); /* Tamaño min del main. Deja el footer abajo. */
 }
 .buscador {
     text-align: center;
@@ -219,7 +219,7 @@ ul {
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 6rem;
     grid-row-gap: 6rem;
-    padding: 0 4rem;
+    padding: 0 6rem;
 }
 .lista-vehiculos .vehiculo {
     transition: all .3s ease;
