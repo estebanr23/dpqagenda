@@ -118,7 +118,7 @@ if($_POST['reg-reserva'] == 'actualizar') {
         if($stmt->affected_rows > 0) {
             $respuesta = array(
                 'respuesta' => 'exito',
-                'id_actualizado' => $stmt->insert_id // No muestra el id de reserva actualizada
+                'id_actualizado' => $id_reserva // No muestra el id de reserva actualizada
             );
         } else {
             $respuesta = array(

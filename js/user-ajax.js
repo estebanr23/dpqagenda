@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    
     // Formulario reserva        
     $('#form-agenda').on('submit', function(e) {
         e.preventDefault();
@@ -17,7 +18,12 @@ $(document).ready(function() {
                         'Correcto',
                         'Se guardo correctamente',
                         'success'
-                      )
+                    )
+
+                    setTimeout(function() {
+                        window.location.href = 'index.php';
+                    }, 2000);
+
                 } else {
                     swal(
                         'Error!',
