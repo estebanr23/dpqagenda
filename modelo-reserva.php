@@ -2,58 +2,61 @@
 
 require_once('includes/funciones/db_conexion.php');
 
-if($_POST['reg-cliente'] == 'nuevo') {
-    $nombre = $_POST['nombre'];
-    $identificacion = $_POST['identificacion'];
-
-    try {
-        $sql = " SELECT * FROM cliente WHERE identificacion = $identificacion";
-        $resultado = $conn->query($sql);
-        $cliente = $resultado->fetch_assoc();
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-    
-    if(!$cliente) { // Si el cliente no existe lo crea.
+if(isset($_POST['reg-cliente'])){
+    if($_POST['reg-cliente'] == 'nuevo') {
+        $nombre = $_POST['nombre'];
+        $identificacion = $_POST['identificacion'];
     
         try {
-            $stmt = $conn->prepare('INSERT INTO cliente (nombre, identificacion) VALUES (?, ?)');
-            $stmt->bind_param("ss", $nombre, $identificacion);
-            $stmt->execute();
-            $id_insertado = $stmt->insert_id;
-            if($stmt->affected_rows > 0) {
-                $respuesta = array(
-                    'respuesta' => 'exito',
-                    'id_insertado' => $id_insertado
-                );
-            } else {
-                $respuesta = array(
-                    'respuesta' => 'error'
-                );    
-            }
-            $stmt->close();
-            $conn->close();
-        
-            $_SESSION['identificacion'] = $identificacion;
-            die(json_encode($respuesta));
-    
+            $sql = " SELECT * FROM cliente WHERE identificacion = $identificacion";
+            $resultado = $conn->query($sql);
+            $cliente = $resultado->fetch_assoc();
         } catch (\Exception $e) {
-            $respuesta = array(
-                'respuesta' => $e->getMessage()
-            );
+            echo $e->getMessage();
         }
-    
-    } else { // Si el cliente existe, solo envia los datos al siguiente formulario.
-        // En caso de existir el cliente la respuesta cambia.
-        $respuesta = array(
-            'respuesta' => 'existente'
-        );
-    
-        $_SESSION['identificacion'] = $cliente['identificacion'];
-        die(json_encode($respuesta));
-        //header('Location: formAgenda.php?nombre='.$cliente_nombre);
+        
+        if(!$cliente) { // Si el cliente no existe lo crea.
+        
+            try {
+                $stmt = $conn->prepare('INSERT INTO cliente (nombre, identificacion) VALUES (?, ?)');
+                $stmt->bind_param("ss", $nombre, $identificacion);
+                $stmt->execute();
+                $id_insertado = $stmt->insert_id;
+                if($stmt->affected_rows > 0) {
+                    $respuesta = array(
+                        'respuesta' => 'exito',
+                        'id_insertado' => $id_insertado
+                    );
+                } else {
+                    $respuesta = array(
+                        'respuesta' => 'error'
+                    );    
+                }
+                $stmt->close();
+                $conn->close();
+            
+                $_SESSION['identificacion'] = $identificacion;
+                die(json_encode($respuesta));
+        
+            } catch (\Exception $e) {
+                $respuesta = array(
+                    'respuesta' => $e->getMessage()
+                );
+            }
+        
+        } else { // Si el cliente existe, solo envia los datos al siguiente formulario.
+            // En caso de existir el cliente la respuesta cambia.
+            $respuesta = array(
+                'respuesta' => 'existente'
+            );
+        
+            $_SESSION['identificacion'] = $cliente['identificacion'];
+            die(json_encode($respuesta));
+            //header('Location: formAgenda.php?nombre='.$cliente_nombre);
+        }
     }
 }
+
 
 // Crear Reserva
 if($_POST['reg-reserva'] == 'nuevo') {
@@ -118,7 +121,7 @@ if($_POST['reg-reserva'] == 'actualizar') {
         if($stmt->affected_rows > 0) {
             $respuesta = array(
                 'respuesta' => 'exito',
-                'id_actualizado' => $id_reserva // No muestra el id de reserva actualizada
+                'id_actualizado' => $id_reserva 
             );
         } else {
             $respuesta = array(

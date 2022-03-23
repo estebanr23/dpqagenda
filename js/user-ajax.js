@@ -19,11 +19,6 @@ $(document).ready(function() {
                         'Se guardo correctamente',
                         'success'
                     )
-
-                    setTimeout(function() {
-                        window.location.href = 'index.php';
-                    }, 2000);
-
                 } else {
                     swal(
                         'Error!',
