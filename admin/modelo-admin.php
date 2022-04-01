@@ -10,19 +10,15 @@ if($conn->ping()) {
 */
 include_once '../includes/funciones/db_conexion.php';
 
-$usuario = $_POST['usuario'];
-$nombre = $_POST['nombre'];
-$nivel = $_POST['nivel'];
-$password = $_POST['password'];
-$id_registro = $_POST['id_registro'];
+if($_POST['registro'] != 'eliminar') {
+    $usuario = $_POST['usuario'];
+    $nombre = $_POST['nombre'];
+    $nivel = $_POST['nivel'];
+    $password = $_POST['password'];
+}
 
 // Crear admin
 if ($_POST['registro'] == 'nuevo') {
-    // die(json_encode($_POST)); Detiene la ejecucion (como un break) y muestra por consola los datos de _POST.
-    // $usuario = $_POST['usuario'];
-    // $nombre = $_POST['nombre'];
-    // $password = $_POST['password'];
-
     
     $opciones = array(
         'cost' => 12
@@ -46,7 +42,6 @@ if ($_POST['registro'] == 'nuevo') {
             $respuesta = array(
                 'respuesta' => 'error'
             );
-            // die(json_encode($respuesta));
         }
         $stmt->close();
         $conn->close();
@@ -59,6 +54,7 @@ if ($_POST['registro'] == 'nuevo') {
 
 // Editar admin
 if ($_POST['registro'] == 'actualizar') {
+    $id_registro = $_POST['id_registro'];
     
     try {
         // empty() cheque si una variable esta vacia.
@@ -76,7 +72,7 @@ if ($_POST['registro'] == 'actualizar') {
         }
         
         $stmt->execute();
-        if($stmt->affected_rows) {
+        if($stmt->affected_rows > 0) {
             $respuesta = array(
                 'respuesta' => 'exito',
                 'id_actualizado' => $stmt->insert_id

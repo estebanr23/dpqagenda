@@ -1,14 +1,13 @@
 <?php 
-
 include_once '../includes/funciones/db_conexion.php';
-//include_once '/funciones/funciones.php';
 
-$modelo = $_POST['modelo'];
-$dominio = $_POST['dominio'];
-$titular = $_POST['titular'];
-$anio = $_POST['anio'];
-$id_registro = $_POST['id_registro'];
-$estado_vehiculo = 1;
+if($_POST['registro'] != 'eliminar') {
+    $modelo = $_POST['modelo'];
+    $dominio = $_POST['dominio'];
+    $titular = $_POST['titular'];
+    $anio = $_POST['anio'];
+    $estado_vehiculo = 1;
+}    
 
 // Crear vehiculo
 if ($_POST['registro'] == 'nuevo') {
@@ -54,6 +53,9 @@ if ($_POST['registro'] == 'nuevo') {
 
 // Editar vehiculo
 if ($_POST['registro'] == 'actualizar') {
+
+    $id_registro = $_POST['id_registro'];
+    $imagen_url = $_POST['url_imagen'];
 
     $directorio = "../img/vehiculos/";
 

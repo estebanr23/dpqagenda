@@ -63,7 +63,7 @@
                   <img src="../img/vehiculos/<?php echo $vehiculo['url_imagen']; ?>" width="200">
                 </div>
                 <div class="form-group">
-                  <label for="imagen_invitado">File input</label>
+                  <label for="imagen_vehiculo">File input</label>
                   <input type="file" class="form-control" id="imagen_vehiculos" name="archivo_imagen">
 
                   <p class="help-block">Añada la imagen aqui</p>
@@ -73,6 +73,7 @@
               <div class="box-footer">
                 <input type="hidden" name="registro" value="actualizar">
                 <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
+                <input type="hidden" name="url_imagen" value="<?php echo $vehiculo['url_imagen']; ?>"> <!-- Campo agregado para la imagen predeterminada de editar. -->
                 <button type="submit" class="btn btn-primary" id="crear_registro_vehiculo">Guardar</button>
               </div>
             </form>

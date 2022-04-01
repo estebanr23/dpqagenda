@@ -12,8 +12,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Crear Administrador
-        <small>Llena el formulario para crear un administrador</small>
+        Crear Vehiculos
+        <small>Llena el formulario para crear un vehiculo</small>
       </h1>
     </section>
       
@@ -24,7 +24,7 @@
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Crear Admin</h3>
+              <h3 class="box-title">Crear Vehiculo</h3>
             </div>
             <!-- form start -->
             <form role="form" name="guardar_registro" id="guardar-registro-archivo" method="POST" action="modelo-vehiculo.php" enctype="multipart/form-data">

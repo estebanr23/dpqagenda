@@ -2,9 +2,10 @@
 
 include_once '../includes/funciones/db_conexion.php';
 
-$nombre = $_POST['nombre'];
-$iden = $_POST['identificacion'];
-$id_registro = $_POST['id_registro'];
+if($_POST['registro'] != 'eliminar') {
+    $nombre = $_POST['nombre'];
+    $iden = $_POST['identificacion'];
+}
 
 if ($_POST['registro'] == 'nuevo') {
 
@@ -35,6 +36,8 @@ if ($_POST['registro'] == 'nuevo') {
 
 // Editar admin
 if ($_POST['registro'] == 'actualizar') {
+    
+    $id_registro = $_POST['id_registro'];
     
     try {
         $stmt = $conn->prepare('UPDATE cliente SET nombre = ?, identificacion = ?, editado = NOW() WHERE id_cliente = ?');

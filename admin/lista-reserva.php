@@ -72,9 +72,6 @@
                         <td><?php echo $reserva['estado_res']; ?></td>
                         <td><?php echo $reserva['total']; ?></td>
                         <td>
-                          <a href="editar-reserva.php?id=<?php echo $reserva['id_reserva']; ?>" class="btn bg-orange btn-flat margin">
-                            <i class="fa fa-pencil"></i>
-                          </a>
                           <a href="#" data-id="<?php echo $reserva['id_reserva']; ?>" data-tipo="reserva" class="btn bg-maroon bnt-flat margin borrar_registro">
                             <i class="fa fa-trash"></i>
                           </a>
