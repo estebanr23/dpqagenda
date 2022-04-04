@@ -48,14 +48,29 @@
                   <label for="nombre">Nombre:</label>
                   <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo" value="<?php echo $admin['nombre']; ?>">
                 </div>
+
+                <?php 
+                  $admin_nivel = $admin['nivel'];
+
+                  $opciones_nivel = array(
+                    'Administrador' => 1,
+                    'Normal' => 2,
+                    'Consultor' => 3
+                  );
+                ?>
                 <div class="form-group">
                   <label for="nivel">Nivel:</label>
                   <select class="form-control" name="nivel" id="nivel">
-                    <option value="1">Administrador</option>
-                    <option value="2">Normal</option>
-                    <option value="3">Consultor</option>
+                    <?php foreach($opciones_nivel as $nivel => $value) { 
+                      if($admin_nivel == $value) { ?>
+                        <option value="<?php echo $value; ?>" selected><?php echo $nivel; ?></option>
+                      <?php } else { ?>
+                        <option value="<?php echo $value; ?>"><?php echo $nivel; ?></option>
+                      <?php } ?>
+                    <?php } ?>
                   </select>
                 </div>
+
                 <div class="form-group">
                   <label for="password">Password:</label>
                   <input type="password" class="form-control" id="password" name="password" placeholder="Password para Iniciar Sesion">
