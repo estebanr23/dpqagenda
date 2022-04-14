@@ -15,7 +15,7 @@ if ($_POST['registro'] == 'nuevo') {
     $directorio = "../img/vehiculos/";
 
     if(!is_dir($directorio)) {
-        mkdir($directorio, 0755, true); 
+        mkdir($directorio, 0777, true); 
     }
 
     if(move_uploaded_file($_FILES['archivo_imagen']['tmp_name'], $directorio . $_FILES['archivo_imagen']['name'])) {
